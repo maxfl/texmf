@@ -1,4 +1,7 @@
 %%
+%% This is file `disser.cls',
+%% generated with the docstrip utility.
+%%
 %% The original source files were:
 %%
 %% disser.dtx  (with options: `disser')
@@ -14,17 +17,17 @@
 %% titlepage.dtx  (with options: `titlepage')
 %% toc.dtx  (with options: `toc')
 %% custom.dtx  (with options: `custom')
-%%
-%% Copyright (c) 2004-2010 Stanislav Kruchinin.
+%% 
+%% Copyright (c) 2004-2014 Stanislav Kruchinin.
 %% All rights reserved.
-%%
+%% 
 %% This file is part of the disser package.
-%%
+%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% disser -- LaTeX document class for dissertations.
 %%
-%% Copyright (c) 2004-2012 Stanislav Kruchinin
+%% Copyright (c) 2004-2014 Stanislav Kruchinin
 %%
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -41,7 +44,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{disser}[2012/11/29 1.2.0 Document class for dissertations]
+\ProvidesClass{disser}[2013/12/30 1.3.0 %
+  Document class for dissertations]
 
 \RequirePackage{kvoptions}
 
@@ -65,14 +69,14 @@
 \newif\ifDis@ams\Dis@amstrue
 \newif\ifDis@href\Dis@hreffalse
 \newif\ifDis@subf\Dis@subffalse
-\newif\ifDis@subcap\Dis@subcapfalse
+\newif\ifDis@subcap\Dis@subcapfalse %gonchar
 \newif\ifDis@times\Dis@timesfalse
 \newif\ifDis@mtpro\Dis@mtprofalse
-\newif\ifDis@natbib\Dis@natbibtrue
+\newif\ifDis@natbib\Dis@natbibtrue %gonchar
 
 \DeclareOption{href}{\Dis@hreftrue}
 \DeclareOption{subf}{\Dis@subftrue}
-\DeclareOption{subcap}{\Dis@subcaptrue}
+\DeclareOption{subcap}{\Dis@subcaptrue} %gonchar
 \DeclareOption{libcat}{\Dis@libcattrue}
 \DeclareOption{classified}{\Dis@classifiedtrue}
 \DeclareOption{facsimile}{\Dis@facsimiletrue}
@@ -94,7 +98,7 @@
   \setlength\paperheight{\paperwidth}%
   \setlength\paperwidth {\@tempdima}
 }
-\DeclareOption{nonatbib}{\Dis@natbibfalse}
+\DeclareOption{nonatbib}{\Dis@natbibfalse} %gonchar
 
 \newcommand\@ptsize{}
 \DeclareOption{8pt} {\renewcommand\@ptsize{8}}
@@ -1471,7 +1475,6 @@
 %   }
 % \fi
 
-\usepackage{wrapfig}
 \ifDis@subf
   \usepackage[config,font=small,labelsep=period]{caption,subfig}
   \def\thesubfigure{\textit{\asbuk{subfigure}}}

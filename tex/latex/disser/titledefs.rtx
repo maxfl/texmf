@@ -6,7 +6,7 @@
 %%
 %% titledefs.dtx  (with options: `titledefs')
 %% 
-%% Copyright (c) 2004-2010 Stanislav Kruchinin.
+%% Copyright (c) 2004-2014 Stanislav Kruchinin.
 %% All rights reserved.
 %% 
 %% This file is part of the disser package.
@@ -44,7 +44,7 @@
 \cyrr\cyru\cyrk\cyro\cyrv\cyro\cyrd\cyri\cyrt\cyre\cyrl\cyrsftsn}
 \def\sasndname{\saname}
 \def\salabel{\saname}
-\def\sasndlabel{\saname}
+\def\sasndlabel{\sasndname}
 \def\sconname{\cyr\CYRN\cyra\cyru\cyrch\cyrn\cyrery\cyrishrt\ %
 \cyrk\cyro\cyrn\cyrs\cyru\cyrl\cyrsftsn\cyrt\cyra\cyrn\cyrt}
 \def\sconsndname{\sconname}
@@ -114,16 +114,22 @@
 
 \AtBeginDocument{%
   \addto\captionsrussian{%
-    \def\contentsname{\cyr\CYRS\cyro\cyrd\cyre\cyrr\cyrzh\cyra\cyrn\cyri\cyre}
+    \def\contentsname{\cyr\CYRO\cyrg\cyrl\cyra\cyrv\cyrl\cyre\cyrn\cyri\cyre}
   }
 }
 
 \providecommand*\introname{\cyr\CYRV\cyrv\cyre\cyrd\cyre\cyrn\cyri\cyre}
 \providecommand*\intro{\nchapter{\introname}}
+
+\providecommand*\reviewname{\cyr\CYRO\cyrb\cyrz\cyro\cyrr\ %
+\cyrl\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyrery}
+\providecommand*\review{\nchapter{\reviewname}}
+
 \providecommand*\conclusionname{%
 \cyr\CYRZ\cyra\cyrk\cyrl\cyryu\cyrch\cyre\cyrn\cyri\cyre
 }
 \providecommand*\conclusion{\nchapter{\conclusionname}}
+
 \providecommand*\defsname{%
 {\cyr\CYRS\cyrp\cyri\cyrs\cyro\cyrk\ %
 \cyrs\cyro\cyrk\cyrr\cyra\cyrshch\cyre\cyrn\cyri\cyrishrt\ \cyri\ %
@@ -131,14 +137,30 @@
 \cyro\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre\cyrn\cyri\cyrishrt}
 }
 \providecommand*\defs{\nchapter{\defsname}}
-\providecommand*\reviewname{\cyr\CYRO\cyrb\cyrz\cyro\cyrr\ %
-\cyrl\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyrery}
-\providecommand*\review{\nchapter{\reviewname}}
-\providecommand*\dictname{\cyr\CYRS\cyrl\cyro\cyrv\cyra\cyrr\cyrsftsn\ %
+
+\providecommand*\dictname{%
+{\cyr\CYRS\cyrl\cyro\cyrv\cyra\cyrr\cyrsftsn\ %
 \cyrt\cyre\cyrr\cyrm\cyri\cyrn\cyro\cyrv}
+}
 \providecommand*\dict{\nchapter{\dictname}}
 
-\disser@deflength\fieldhshift{8cm}
+\AtBeginDocument{%
+  \addto\captionsrussian{%
+    \def\bibname{\cyr\CYRS\cyrp\cyri\cyrs\cyro\cyrk\ %
+    \cyrl\cyri\cyrt\cyre\cyrr\cyra\cyrt\cyru\cyrr\cyrery}
+  }
+}
+
+\AtBeginDocument{%
+  \addto\captionsrussian{%
+    \def\listfigurename{\cyr\CYRS\cyrp\cyri\cyrs\cyro\cyrk\ %
+    \cyri\cyrl\cyrl\cyryu\cyrs\cyrt\cyrr\cyra\cyrt\cyri\cyrv\cyrn\cyro%
+    \cyrg\cyro %
+    \cyrm\cyra\cyrt\cyre\cyrr\cyri\cyra\cyrl\cyra}
+  }
+}
+
+\deflength\fieldhshift{8cm}
 
 \providecommand\diplomafield[1]{%
   \csname #1label\endcsname,\\%

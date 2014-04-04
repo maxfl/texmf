@@ -160,7 +160,7 @@
   }
 }
 
-\deflength\fieldhshift{8cm}
+\disser@deflength\fieldhshift{8cm}
 
 \providecommand\diplomafield[1]{%
   \csname #1label\endcsname,\\%

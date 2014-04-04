@@ -1,0 +1,14 @@
+\ProvidesPackage{cyrdefs}
+
+\DeclareOption{enum}{%
+  % Use cyrillic for letter enumeration
+  \let\alph\asbuk
+  \let\Alph\Asbuk
+}
+
+\DeclareOption{itemi}{%
+  \def\labelitemi{---}
+}
+
+\ProcessOptions\relax
+

@@ -69,18 +69,18 @@
 \newif\ifDis@ams\Dis@amstrue
 \newif\ifDis@href\Dis@hreffalse
 \newif\ifDis@subf\Dis@subffalse
-\newif\ifDis@subcap\Dis@subcapfalse %gonchar
+\newif\ifDis@subcap\Dis@subcapfalse
 \newif\ifDis@times\Dis@timesfalse
 \newif\ifDis@mtpro\Dis@mtprofalse
-\newif\ifDis@natbib\Dis@natbibfalse %gonchar
-
+\newif\ifDis@natbib\Dis@natbibfalse
 \DeclareOption{href}{\Dis@hreftrue}
 \DeclareOption{subf}{\Dis@subftrue}
-\DeclareOption{subcap}{\Dis@subcaptrue} %gonchar
+\DeclareOption{subcap}{\Dis@subcaptrue}
 \DeclareOption{libcat}{\Dis@libcattrue}
 \DeclareOption{classified}{\Dis@classifiedtrue}
 \DeclareOption{facsimile}{\Dis@facsimiletrue}
 \DeclareOption{noams}{\Dis@amsfalse}
+\DeclareOption{natbib}{\Dis@natbibtrue}
 \DeclareOption{a4paper}{%
   \setlength\paperheight{297mm}
   \setlength\paperwidth {210mm}
@@ -98,8 +98,6 @@
   \setlength\paperheight{\paperwidth}%
   \setlength\paperwidth {\@tempdima}
 }
-\DeclareOption{nonatbib}{\Dis@natbibfalse} %gonchar
-\DeclareOption{natbib}{\Dis@natbibtrue} %gonchar
 
 \newcommand\@ptsize{}
 \DeclareOption{8pt} {\renewcommand\@ptsize{8}}
@@ -340,21 +338,9 @@
 \newcounter{figure}[chapter]
 \newcounter{table}[chapter]
 
-% gonchar: define correct \@asbuk and \@Asbuk references
-\ifdefined\@Asbuk
-  \def\disser@Asbuk#1{\@Asbuk#1}
-\else%
-  \def\disser@Asbuk#1{\russian@Alph#1}
-\fi
-\ifdefined\@asbuk
-  \def\disser@asbuk#1{\@asbuk#1}
-\else%
-  \def\disser@asbuk#1{\russian@alph#1}
-\fi
-
 \renewcommand\thepart{\@Roman\c@part}
 \renewcommand\thechapter{\@arabic\c@chapter}
-\newcommand\theappendix{\disser@Asbuk\c@chapter}
+\newcommand\theappendix{\Asbuk{chapter}}
 \renewcommand\thesection{%
 \ifnum\c@chapter > \z@
   \thechapter.\@arabic\c@section%
@@ -1428,52 +1414,53 @@
 \fi
 
 \ifDis@natbib
-   \usepackage[square,comma,sort&compress,numbers]{natbib}
+  \usepackage[square,comma,sort&compress,numbers]{natbib}
 
-   \renewcommand\bibsection{\nchapter{\bibname}}
-   \@ifundefined{chapter}{%
-     \renewcommand\bibsection{%
-      \nsection{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
-     }%
-   }{%
-     \@ifxundefined\NAT@sectionbib{%
-       \renewcommand\bibsection{%
-         \nchapter{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
-       }%
-     }{%
-       \renewcommand\bibsection{%
-         \nsection{\bibname\ifx\@mkboth\@gobbletwo\else\markright{\MakeUppercase{\bibname}}\fi}%
-       }%
-     }%
-   }%
+  \renewcommand\bibsection{\nchapter{\bibname}}
+  \@ifundefined{chapter}{%
+    \renewcommand\bibsection{%
+     \nsection{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
+    }%
+  }{%
+    \@ifxundefined\NAT@sectionbib{%
+      \renewcommand\bibsection{%
+        \nchapter{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
+      }%
+    }{%
+      \renewcommand\bibsection{%
+        \nsection{\bibname\ifx\@mkboth\@gobbletwo\else\markright{\MakeUppercase{\bibname}}\fi}%
+      }%
+    }%
+  }%
 
-   \renewcommand\bibpreamble{%
-     \renewcommand\@biblabel[1]{##1.}%
-   }
+  \renewcommand\bibpreamble{%
+    \renewcommand\@biblabel[1]{##1.}%
+  }
 
-   \renewenvironment{thebibliography}[1]{%
-     \bibsection
-     \parindent \z@
-     \bibpreamble\bibfont
-     \list{\@biblabel{\arabic{NAT@ctr}}}%
-     {\@bibsetup{#1}\setcounter{NAT@ctr}{0}}%
-     % \ifNAT@openbib
-   %     \renewcommand\newblock{\par}
-   %   \else
-   %     \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
-     % \fi
-     \sloppy\clubpenalty4000\widowpenalty4000
-     \sfcode`\.=1000\relax
-     \let\citeN\cite
-     \let\shortcite\cite
-     \let\citeasnoun\cite
-   }{%
-     \def\@noitemerr{%
-       \PackageWarning{natbib}{Empty `thebibliography' environment}%
-     }
-     \endlist\vskip-\lastskip%
-   }
- \fi
+  \renewenvironment{thebibliography}[1]{%
+    \setlength\bibsep{0pt}
+    \bibsection
+    \parindent \z@
+    \bibpreamble\bibfont
+    \list{\@biblabel{\arabic{NAT@ctr}}}%
+    {\@bibsetup{#1}\setcounter{NAT@ctr}{0}}%
+    %\ifNAT@openbib
+      %\renewcommand\newblock{\par}
+    %\else
+      %\renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
+    %\fi
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax
+    \let\citeN\cite
+    \let\shortcite\cite
+    \let\citeasnoun\cite
+  }{%
+    \def\@noitemerr{%
+      \PackageWarning{natbib}{Empty `thebibliography' environment}%
+    }
+    \endlist\vskip-\lastskip%
+  }
+\fi
 
 \ifDis@subf
   \usepackage[config,font=small,labelsep=period]{caption,subfig}
@@ -1486,8 +1473,8 @@
   \usepackage[list=true]{subcaption}
   \DeclareCaptionSubType[asbuk]{figure}
   \def\thesubfigure{\textit{\asbuk{subfigure}}}
-  %\providecommand\thefigsubsep{,~}
-  %\def\p@subfigure{\@nameuse{thefigure}\thefigsubsep}
+  \providecommand\thefigsubsep{,~}
+  \def\p@subfigure{\@nameuse{thefigure}\thefigsubsep}
 \fi
 
 \ifpdf

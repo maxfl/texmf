@@ -1,10 +1,10 @@
 %%
-%% This is file `candidate.rtx',
+%% This is file `doctor.rtx',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% candidate.dtx  (with options: `candidate')
+%% doctor.dtx  (with options: `doctor')
 %% 
 %% Copyright (c) 2004-2014 Stanislav Kruchinin.
 %% All rights reserved.
@@ -12,23 +12,19 @@
 %% This file is part of the disser package.
 %% 
 
-\ProvidesFile{candidate.rtx}
+\ProvidesFile{doctor.rtx}
 
-\newcommand\candidate@the{\default@the}
-\candidate@the
+\newcommand\doctor@the{\default@the}
+\doctor@the
 
 \if@titlepage\renewcommand\maketitle[1][]{
 \ifthenelse{\equal{#1}{en}}{\@titlepage@entrue}{\@titlepage@enfalse}
 \if@titlepage@en
   \def\appos{Head of Department}
-  \def\saname{Scientific Supervisor}
-  \def\salabel{\saname}
-  \def\sasndname{\saname}
-  \def\sasndlabel{\sasndname}
   \def\sconname{Scientific Consultant}
   \def\sconlabel{\sconname}
   \def\sconsndname{\sconname}
-  \def\sconsndlabel{\sconsndname}
+  \def\sconsndlabel{\sconname}
   \def\topicname{Topic}
   \def\asmanuscript{As Manuscript}
 \fi
@@ -36,12 +32,12 @@
 \ifx\firstskip\undefined
   \newlength\firstskip
   \ifDis@libcat
-    \setlength\firstskip{2ex}
+    \setlength\firstskip{1ex}
   \else
     \setlength\firstskip{4ex}
   \fi
 \fi
-\ifundeflength\secondskip{2cm}
+\ifundeflength\secondskip{3cm}
 \ifundeflength\thirdskip{1cm}
 \ifundeflength\fourthskip{1cm}
 \ifundeflength\fifthskip{1cm}
@@ -61,7 +57,7 @@
 \vskip\firstskip
 \begin{flushright}
   \ifDis@classified\classify\fi
-  \asmanuscript%\\ %avoid no line to end error
+  \asmanuscript\\
   \ifDis@facsimile\facsimile\fi
   \ifDis@libcat\libcatname\ \@libcatnum\fi
 \end{flushright}
@@ -78,12 +74,6 @@
   \vskip\fifthskip
   {\titlefont\@title}
 \end{center}
-\ifx\@sa\empty\else
-  \vskip\sixthskip\disserfield{sa}
-\fi
-\ifx\@sasnd\empty\else
-  \vskip\sixthskip\disserfield{sasnd}
-\fi
 \ifx\@scon\empty\else
   \vskip\sixthskip
   \disserfield{scon}
@@ -100,4 +90,4 @@
 }\fi
 \endinput
 %%
-%% End of file `candidate.rtx'.
+%% End of file `doctor.rtx'.

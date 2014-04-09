@@ -338,6 +338,16 @@
 \newcounter{figure}[chapter]
 \newcounter{table}[chapter]
 
+\ifdefined\@Asbuk
+  \def\disser@Asbuk#1{\@Asbuk#1}
+\else%
+  \def\disser@Asbuk#1{\russian@Alph#1}
+\fi
+\ifdefined\@asbuk
+  \def\disser@asbuk#1{\@asbuk#1}
+\else%
+  \def\disser@asbuk#1{\russian@alph#1}
+\fi
 \renewcommand\thepart{\@Roman\c@part}
 \renewcommand\thechapter{\@arabic\c@chapter}
 \newcommand\theappendix{\Asbuk{chapter}}

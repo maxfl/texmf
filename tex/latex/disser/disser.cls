@@ -1454,11 +1454,11 @@
     \bibpreamble\bibfont
     \list{\@biblabel{\arabic{NAT@ctr}}}%
     {\@bibsetup{#1}\setcounter{NAT@ctr}{0}}%
-    %\ifNAT@openbib
-      %\renewcommand\newblock{\par}
-    %\else
-      %\renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
-    %\fi
+    \ifNAT@openbib
+      \renewcommand\newblock{\par}
+    \else
+      \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
+    \fi
     \sloppy\clubpenalty4000\widowpenalty4000
     \sfcode`\.=1000\relax
     \let\citeN\cite

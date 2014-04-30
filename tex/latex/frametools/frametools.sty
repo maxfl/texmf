@@ -37,7 +37,7 @@
 %
 % Input a file with a beamer frame, that can use \myFrameOverlay variable to select overlays
 %
-\def\inputover#1#2{
+\newcommand\inputover#1#2{
   {
     \def\myFrameOverlay{#1}
     \input #2

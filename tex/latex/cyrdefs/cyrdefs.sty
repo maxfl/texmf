@@ -7,10 +7,12 @@
 }
 
 \DeclareOption{itemi}{%
-  \def\labelitemi{---}
+  \renewcommand\labelitemi{---}
 }
 
 \DeclareOption{utf8}{%
+  \DeclareTextCommand{\cyr}{EU2}{}
+
   \DeclareTextCommand{\CYRA}{EU2}{А}
   \DeclareTextCommand{\cyra}{EU2}{а}
   \DeclareTextCommand{\CYRB}{EU2}{Б}

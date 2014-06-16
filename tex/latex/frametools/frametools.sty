@@ -4,6 +4,10 @@
 \RequirePackage{etoolbox}
 \RequirePackage[absolute,overlay]{textpos} % for textblock environment
 
+\RequirePackage{tikz}
+\usetikzlibrary{backgrounds,shapes.multipart}
+\pgfdeclarelayer{myback}
+
 %
 % Include another people slides
 %
@@ -94,6 +98,17 @@
     \end{column}%
     \begin{column}{#1}\end{column}%
   \end{columns}%
+}
+
+\newcommand\preliminary{%
+  \pgfsetlayers{background,main,myback}
+  \begin{tikzpicture}[remember picture,overlay]
+    \begin{pgfonlayer}{myback}
+      \node [fill=red, opacity=0.2, text=black, text opacity=1, rotate=-45, anchor=north west,
+      shift={(-1.1,-1.1)}]
+      at (current page.north east) {PRELIMINARY};
+    \end{pgfonlayer}
+  \end{tikzpicture}
 }
 
 %

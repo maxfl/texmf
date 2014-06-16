@@ -60,9 +60,9 @@
 %
 % A text in bottom right corner of the slide
 %
-\newcommand\FrameText[1]{%
-  \begin{textblock*}{\paperwidth}(0pt,0.98\textheight)
-    \raggedleft #1\hspace{.5em}
+\newcommand\FrameText[2][0.98\textheight]{%
+  \begin{textblock*}{\paperwidth}(0pt,#1)
+    \raggedleft #2\hspace{.5em}
   \end{textblock*}
 }
 

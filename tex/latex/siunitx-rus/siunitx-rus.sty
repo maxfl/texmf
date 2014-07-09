@@ -1,0 +1,49 @@
+\ProvidesPackage{lsiunitx}
+\RequirePackage{siunitx}
+\RequirePackage{translator}
+
+\newtranslation[to=russian]{and}{и}
+\newtranslation[to=russian]{b}{б}
+\newtranslation[to=russian]{c}{с}
+\newtranslation[to=russian]{g}{г}
+\newtranslation[to=russian]{G}{Г}
+\newtranslation[to=russian]{m}{м}
+\newtranslation[to=russian]{M}{М}
+\newtranslation[to=russian]{m.w.e.}{м.в.э.}
+\newtranslation[to=russian]{metre}{метр}
+\newtranslation[to=english]{micro}{\ensuremath{\SIUnitSymbolMicro}}
+\newtranslation[to=russian]{micro}{мк}
+\newtranslation[to=russian]{n}{н}
+\newtranslation[to=russian]{k}{к}
+\newtranslation[to=russian]{s}{с}
+\newtranslation[to=russian]{t}{т}
+\newtranslation[to=russian]{W}{Вт}
+\newtranslation[to=russian]{eV}{эВ}
+
+\sisetup{
+  list-final-separator = {\translate{and}},
+  list-pair-separator= {\translate{and}},
+  range-phrase= {\translate{to (numerical range)}},
+}
+
+\DeclareSIPrefix \nano  {\translate{n}}{-9}
+\DeclareSIPrefix \micro {\translate{micro}}{-6}
+\DeclareSIPrefix \milli {\translate{m}}{-3}
+\DeclareSIPrefix \centi {\translate{c}}{-2}
+\DeclareSIPrefix \kilo  {\translate{k}}{3}
+\DeclareSIPrefix \mega  {\translate{M}}{6}
+\DeclareSIPrefix \giga  {\translate{G}}{9}
+
+\DeclareSIUnit \second   {\translate{s}}
+\DeclareSIUnit \metre    {\translate{m}}
+\DeclareSIUnit \gram     {\translate{g}}
+\DeclareSIUnit \tonne    {\translate{t}}
+\DeclareSIUnit \electronvolt {\translate{eV}}
+\DeclareSIUnit \barn     {\translate{b}}
+\DeclareSIUnit \watt     {\translate{W}}
+\DeclareSIUnit \mwe      {\translate{m.w.e.}}
+
+\DeclareSIUnit \ns       {\nano\second}
+\DeclareSIUnit \us       {\micro\second}
+\DeclareSIUnit \ms       {\milli\second}
+

@@ -3,6 +3,7 @@
 \RequirePackage{translator}
 
 \newtranslation[to=russian]{and}{и}
+\newtranslation[to=russian]{Bq}{Бк}
 \newtranslation[to=english]{barn}{b}
 \newtranslation[to=russian]{barn}{бн}
 \newtranslation[to=russian]{c}{с}
@@ -49,6 +50,13 @@
 \DeclareSIUnit \mwe      {\translate{m.w.e.}}
 \DeclareSIUnit \litre    {\translate{l}}
 \DeclareSIUnit \liter    {\translate{l}}
+
+\DeclareSIUnit \becquerel{\translate{Bq}}
+\DeclareSIUnit \Bq  {        \becquerel }
+\DeclareSIUnit \kBq { \kilo  \becquerel }
+\DeclareSIUnit \MBq { \mega  \becquerel }
+\DeclareSIUnit \GBq { \giga  \becquerel }
+\DeclareSIUnit \TBq { \tera  \becquerel }
 
 \DeclareSIUnit \ubarn     {\micro\barn}
 \DeclareSIUnit \mbarn     {\milli\barn}

@@ -2,64 +2,64 @@
 \RequirePackage{siunitx}
 \RequirePackage{translator}
 
-\newtranslation[to=russian]{and}{\text{и}}
-\newtranslation[to=russian]{Bq}{\text{Бк}}
-\newtranslation[to=english]{barn}{\text{b}}
-\newtranslation[to=russian]{barn}{\text{бн}}
-\newtranslation[to=russian]{c}{\text{с}}
-\newtranslation[to=russian]{g}{\text{г}}
-\newtranslation[to=russian]{G}{\text{Г}}
-\newtranslation[to=russian]{Hz}{\text{Гц}}
-\newtranslation[to=russian]{l}{\text{л}}
-\newtranslation[to=russian]{L}{\text{Л}}
-\newtranslation[to=russian]{m}{\text{м}}
-\newtranslation[to=russian]{M}{\text{М}}
-\newtranslation[to=russian]{m.w.e.}{\text{м.в.э.}}
-\newtranslation[to=russian]{metre}{\text{метр}}
+\newtranslation[to=russian]{si_and}{и}
+\newtranslation[to=russian]{Bq}{Бк}
+\newtranslation[to=english]{barn}{b}
+\newtranslation[to=russian]{barn}{бн}
+\newtranslation[to=russian]{c}{с}
+\newtranslation[to=russian]{g}{г}
+\newtranslation[to=russian]{G}{Г}
+\newtranslation[to=russian]{Hz}{Гц}
+\newtranslation[to=russian]{l}{л}
+\newtranslation[to=russian]{L}{Л}
+\newtranslation[to=russian]{m}{м}
+\newtranslation[to=russian]{M}{М}
+\newtranslation[to=russian]{m.w.e.}{м.в.э.}
+\newtranslation[to=russian]{metre}{метр}
 \newtranslation[to=english]{micro}{\ensuremath{\SIUnitSymbolMicro}}
-\newtranslation[to=russian]{micro}{\text{мк}}
-\newtranslation[to=russian]{n}{\text{н}}
-\newtranslation[to=russian]{k}{\text{к}}
-\newtranslation[to=russian]{s}{\text{с}}
-\newtranslation[to=russian]{t}{\text{т}}
-\newtranslation[to=russian]{to (numerical range)}{\text{до}}
+\newtranslation[to=russian]{micro}{мк}
+\newtranslation[to=russian]{n}{н}
+\newtranslation[to=russian]{k}{к}
+\newtranslation[to=russian]{s}{с}
+\newtranslation[to=russian]{t}{т}
+\newtranslation[to=russian]{to (numerical range)}{до}
 \newtranslation[to=english]{to (numerical range)}{to}
-\newtranslation[to=russian]{W}{\text{Вт}}
-\newtranslation[to=russian]{eV}{\text{эВ}}
+\newtranslation[to=russian]{W}{Вт}
+\newtranslation[to=russian]{eV}{эВ}
 
 \sisetup{
-  list-final-separator = { \translate{and} },
-  list-pair-separator= { \translate{and} },
-  range-phrase= { \translate{to (numerical range)} },
+  list-final-separator = { \text{\translate{si_and}} },
+  list-pair-separator= { \text{\translate{si_and}} },
+  range-phrase= { \text{\translate{to (numerical range)}} },
 }
 
-\DeclareSIPrefix \nano  {\translate{n}}{-9}
-\DeclareSIPrefix \micro {\translate{micro}}{-6}
-\DeclareSIPrefix \milli {\translate{m}}{-3}
-\DeclareSIPrefix \centi {\translate{c}}{-2}
-\DeclareSIPrefix \kilo  {\translate{k}}{3}
-\DeclareSIPrefix \mega  {\translate{M}}{6}
-\DeclareSIPrefix \giga  {\translate{G}}{9}
+\DeclareSIPrefix \nano  {\text{\translate{n}}}{-9}
+\DeclareSIPrefix \micro {\text{\translate{micro}}}{-6}
+\DeclareSIPrefix \milli {\text{\translate{m}}}{-3}
+\DeclareSIPrefix \centi {\text{\translate{c}}}{-2}
+\DeclareSIPrefix \kilo  {\text{\translate{k}}}{3}
+\DeclareSIPrefix \mega  {\text{\translate{M}}}{6}
+\DeclareSIPrefix \giga  {\text{\translate{G}}}{9}
 
-\DeclareSIUnit \second   {\translate{s}}
-\DeclareSIUnit \metre    {\translate{m}}
-\DeclareSIUnit \gram     {\translate{g}}
-\DeclareSIUnit \tonne    {\translate{t}}
-\DeclareSIUnit \electronvolt {\translate{eV}}
-\DeclareSIUnit \barn     {\translate{barn}}
-\DeclareSIUnit \watt     {\translate{W}}
-\DeclareSIUnit \mwe      {\translate{m.w.e.}}
-\DeclareSIUnit \litre    {\translate{l}}
-\DeclareSIUnit \liter    {\translate{l}}
+\DeclareSIUnit \second   {\text{\translate{s}}}
+\DeclareSIUnit \metre    {\text{\translate{m}}}
+\DeclareSIUnit \gram     {\text{\translate{g}}}
+\DeclareSIUnit \tonne    {\text{\translate{t}}}
+\DeclareSIUnit \electronvolt {\text{\translate{eV}}}
+\DeclareSIUnit \barn     {\text{\translate{barn}}}
+\DeclareSIUnit \watt     {\text{\translate{W}}}
+\DeclareSIUnit \mwe      {\text{\translate{m.w.e.}}}
+\DeclareSIUnit \litre    {\text{\translate{l}}}
+\DeclareSIUnit \liter    {\text{\translate{l}}}
 
-\DeclareSIUnit \becquerel{\translate{Bq}}
+\DeclareSIUnit \becquerel{\text{\translate{Bq}}}
 \DeclareSIUnit \Bq  {        \becquerel }
 \DeclareSIUnit \kBq { \kilo  \becquerel }
 \DeclareSIUnit \MBq { \mega  \becquerel }
 \DeclareSIUnit \GBq { \giga  \becquerel }
 \DeclareSIUnit \TBq { \tera  \becquerel }
 
-\DeclareSIUnit \hertz {\translate{Hz}}
+\DeclareSIUnit \hertz {\text{\translate{Hz}}}
 
 \DeclareSIUnit \ubarn     {\micro\barn}
 \DeclareSIUnit \mbarn     {\milli\barn}

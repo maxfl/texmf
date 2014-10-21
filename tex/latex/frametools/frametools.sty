@@ -113,9 +113,8 @@
 
 %
 % Add beamer titles to PDF bookmarks
-\makeatletter
 \apptocmd{\beamer@@frametitle}{\only<1>{\bookmark[page=\the\c@page,level=3]{#1}}}%
 {\message{** patching of \string\beamer@@frametitle succeeded **}}%
 {\message{** patching of \string\beamer@@frametitle failed **}}%
-\makeatother
 
+\endinput

@@ -1,0 +1,26 @@
+\ProvidesPackage{maxfl}
+\RequirePackage{amsmath}
+\RequirePackage{xparse}
+
+\newif\if@maxfl@tau\@maxfl@taufalse
+
+\DeclareOption{tau}{%
+  %
+  % Use tau=2pi
+  %
+  \@maxfl@tautrue
+}
+
+\DeclareOption{math}{%
+  \input{maxfl-math}
+}
+
+\DeclareOption{pdg}{%
+  \input{maxfl-pdg}
+}
+
+\ExecuteOptions{math}
+
+\ProcessOptions\relax
+
+\endinput

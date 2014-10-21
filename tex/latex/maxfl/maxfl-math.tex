@@ -1,0 +1,118 @@
+\DeclareMathOperator\diag{diag}
+
+\newcommand*\half{\frac{1}{2}}
+\newcommand*\inv{\ensuremath{^{-1}}}
+\newcommand*\transp{\ensuremath{^T}}
+\newcommand*\hconjugate{\ensuremath{^\dagger}}
+\newcommand*\cconjugate{\ensuremath{^c}}
+\newcommand*\conjugate{\ensuremath{^*}}
+\newcommand*\modulus[1]{\ensuremath{\lvert#1\rvert}}
+\newcommand*\expo[1]{\ensuremath{e^{#1}}}
+\newcommand*\squared{\ensuremath{^2}}
+\newcommand*\modsquared[1]{\ensuremath{\lvert#1\rvert^2}}
+\newcommand*\Modsquared[1]{\ensuremath{\left\lvert#1\right\rvert^2}}
+\newcommand*\hconjpart{\text{h.c.}}
+\newcommand*\Determinant[1]{\left|\left|#1\right|\right|}
+\if@maxfl@tau
+  \newcommand*\TwoPi{\tau}
+\else
+  \newcommand*\TwoPi{2\pi}
+\end
+
+% Math symbols, 
+% \lagrangian with two unnecessary arguments, sub- and super- scripts.
+% \lagrangian[CC]
+% \lagrangian[][D]
+% needs xparse
+\NewDocumentCommand\lagrangian{ O{} O{} }{%
+  \ensuremath{%
+    \mathcal{L}%
+    \ifstrequal{#1}{}{}{_\text{#1}}%
+    \ifstrequal{#2}{}{}{^\text{#2}}%
+  }%
+}
+\NewDocumentCommand\Mass{ O{} m }{%
+  \ensuremath{%
+    M%
+    \ifstrequal{#1}{}{}{_\text{#1}}%
+    \ifstrequal{#2}{}{}{^\text{#2}}%
+  }%
+}
+\NewDocumentCommand\mass{ O{} m }{%
+  \ensuremath{%
+    m%
+    \ifstrequal{#1}{}{}{_\text{#1}}%
+    \ifstrequal{#2}{}{}{^\text{#2}}%
+  }%
+}
+
+%
+% Matrix algebra
+%
+\newcommand*\cvec[1]{\ensuremath{\boldsymbol{#1}}}
+\NewDocumentCommand\QuadForm{ m O{} }{% col, mat (optional)
+  \ifstrequal{#2}{}{#1^2}{#1^T #2 #1}
+}
+\NewDocumentCommand\QuadFormI{ m O{} O{} }{% col, mat (optional), ndim (opt)
+  \ifstrequal{#2}{}{#1^2}{%
+    \ifstrequal{#3}{1}{%
+      \frac{#1^2}{#2}
+    }{%
+      \ifstrequal{#2}{}{#1^2}{#1^T #2\inv #1}
+    }
+  }
+}
+
+%
+% Normal distribution
+%
+\NewDocumentCommand\NormalDistNorm{ O{} O{1} }{%
+  % #1 -> covariance (default=none)
+  % #2 -> ndim (default=1)
+  \frac{1}{\sqrt{%
+      \ifstrequal{#2}{1}{%
+        \TwoPi{}
+      }{%
+        (\TwoPi)^#1%
+        \ifstrequal{#1}{}{}{\Determinant{#1}}}%
+      }%
+      \ifstrequal{#2}{1}{#2}{}%
+  }%
+}
+\NewDocumentCommand\NormalDistExp{ m O{} O{1} O{} }{%
+  % #1 -> variable, 
+  % #2 -> covariance (default=none)
+  % #3 -> ndim (default=1)
+  % #4 -> default value (default=none)
+  \expo{%
+    -\half%
+    \QuadFormI{%
+      \ifstrequal{#4}{}{#1}{\left(#1-#4\right)}%
+    }[#2][#3]%
+  }%
+}
+\NewDocumentCommand\NormalDistPdf{ m O{} O{1} O{} }{%
+  % #1 -> variable, 
+  % #2 -> covariance (default=none)
+  % #3 -> ndim (default=1)
+  % #4 -> default value (default=none)
+  \NormalDistNorm[#2][#3]%
+  \NormalDistExp{#1}[#2][#3][#4]
+}
+
+
+%\newcommand\TestNormalDistr{%
+  %\begin{align}
+    %& \NormalDistPdf{x}[V][N][x_0]      & \text{ndim, V, x0}\\
+    %& \NormalDistPdf{x}[1][\sigma^2][x_0] & \text{1, sigma, x0}\\
+    %& \NormalDistPdf{x}[][M][x_0]       & \text{}\\
+    %& \NormalDistPdf{x}[][M]            & \text{}\\
+    %& \NormalDistPdf{x}[V][M]           & \text{}  
+  %\end{align}
+%}
+
+%
+% Derivative
+%
+\newcommand*\Derivative[2]{\frac{d #1}{d #2}}
+\newcommand*\PDerivative[2]{\frac{\partial #1}{\partial #2}}

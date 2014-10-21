@@ -17,9 +17,9 @@
   \newcommand*\TwoPi{\tau}
 \else
   \newcommand*\TwoPi{2\pi}
-\end
+\fi
 
-% Math symbols, 
+% Math symbols,
 % \lagrangian with two unnecessary arguments, sub- and super- scripts.
 % \lagrangian[CC]
 % \lagrangian[][D]
@@ -80,7 +80,7 @@
   }%
 }
 \NewDocumentCommand\NormalDistExp{ m O{} O{1} O{} }{%
-  % #1 -> variable, 
+  % #1 -> variable,
   % #2 -> covariance (default=none)
   % #3 -> ndim (default=1)
   % #4 -> default value (default=none)
@@ -92,7 +92,7 @@
   }%
 }
 \NewDocumentCommand\NormalDistPdf{ m O{} O{1} O{} }{%
-  % #1 -> variable, 
+  % #1 -> variable,
   % #2 -> covariance (default=none)
   % #3 -> ndim (default=1)
   % #4 -> default value (default=none)
@@ -107,7 +107,7 @@
     %& \NormalDistPdf{x}[1][\sigma^2][x_0] & \text{1, sigma, x0}\\
     %& \NormalDistPdf{x}[][M][x_0]       & \text{}\\
     %& \NormalDistPdf{x}[][M]            & \text{}\\
-    %& \NormalDistPdf{x}[V][M]           & \text{}  
+    %& \NormalDistPdf{x}[V][M]           & \text{}
   %\end{align}
 %}
 

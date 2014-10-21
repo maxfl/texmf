@@ -3,24 +3,23 @@
 \RequirePackage{xparse}
 
 \newif\if@maxfl@tau\@maxfl@taufalse
+\newif\if@maxfl@math\@maxfl@taufalse
+\newif\if@maxfl@pdg\@maxfl@taufalse
 
-\DeclareOption{tau}{%
-  %
-  % Use tau=2pi
-  %
-  \@maxfl@tautrue
-}
-
-\DeclareOption{math}{%
-  \input{maxfl-math}
-}
-
-\DeclareOption{pdg}{%
-  \input{maxfl-pdg}
-}
+\DeclareOption{tau}{  \@maxfl@tautrue  }
+\DeclareOption{math}{ \@maxfl@mathtrue }
+\DeclareOption{pdg}{  \@maxfl@pdgtrue  }
 
 \ExecuteOptions{math}
 
 \ProcessOptions\relax
+
+\if@maxfl@math
+  \input{maxfl-math}
+\fi
+
+\if@maxfl@pdg
+  \input{maxfl-pdg}
+\fi
 
 \endinput

@@ -1,6 +1,15 @@
 \DeclareMathOperator\diag{diag}
+\DeclareMathOperator\QuantileFunction{QF}
+\DeclareMathOperator\Min{min}
 
+\newcommand*\Constant{\text{const}}
+\newcommand*\Minimum{\text{min}}
+\newcommand*\Maximum{\text{max}}
+\newcommand*\NegInfty{{-\infty}}
+\newcommand*\ChiSquared{\ensuremath{\chi^2}}
 \newcommand*\half{\frac{1}{2}}
+\newcommand*\PowerHalf{^\half}
+\newcommand*\PowerIHalf{^{-\half}}
 \newcommand*\inv{\ensuremath{^{-1}}}
 \newcommand*\transp{\ensuremath{^T}}
 \newcommand*\hconjugate{\ensuremath{^\dagger}}
@@ -12,7 +21,9 @@
 \newcommand*\modsquared[1]{\ensuremath{\lvert#1\rvert^2}}
 \newcommand*\Modsquared[1]{\ensuremath{\left\lvert#1\right\rvert^2}}
 \newcommand*\hconjpart{\text{h.c.}}
-\newcommand*\Determinant[1]{\left|\left|#1\right|\right|}
+\newcommand*\Determinant[1]{\left\|#1\right\|}
+\newcommand*\LogDet[1]{\log\Determinant{#1}}
+\newcommand*\Mean[1]{\left\langle#1\right\rangle}
 \if@maxfl@tau
   \newcommand*\TwoPi{\tau}
 \else
@@ -71,12 +82,11 @@
   % #2 -> ndim (default=1)
   \frac{1}{\sqrt{%
       \ifstrequal{#2}{1}{%
-        \TwoPi{}
+        \TwoPi{}#1
       }{%
-        (\TwoPi)^#1%
+        (\TwoPi)^#2%
         \ifstrequal{#1}{}{}{\Determinant{#1}}}%
       }%
-      \ifstrequal{#2}{1}{#2}{}%
   }%
 }
 \NewDocumentCommand\NormalDistExp{ m O{} O{1} O{} }{%
@@ -100,7 +110,6 @@
   \NormalDistExp{#1}[#2][#3][#4]
 }
 
-
 %\newcommand\TestNormalDistr{%
   %\begin{align}
     %& \NormalDistPdf{x}[V][N][x_0]      & \text{ndim, V, x0}\\
@@ -112,7 +121,23 @@
 %}
 
 %
+% Poisson distribution
+%
+\newcommand*\PoissonDistPdf[2]{%
+  % #1 -> n
+  % #2 -> mean
+  \frac{#2^{#1}e^{-#2}}{#1!}
+}
+
+%
 % Derivative
 %
 \newcommand*\Derivative[2]{\frac{d #1}{d #2}}
 \newcommand*\PDerivative[2]{\frac{\partial #1}{\partial #2}}
+\NewDocumentCommand\EvaluatedAt{ o m }{%
+  \IfValueTF{#1}{%
+    \left. #1 \right\rvert_{#2}%
+  }{%
+    \Bigr|_{#2}%
+  }%
+}

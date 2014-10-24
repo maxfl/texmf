@@ -6,7 +6,6 @@
 \newcommand*\Minimum{\text{min}}
 \newcommand*\Maximum{\text{max}}
 \newcommand*\NegInfty{{-\infty}}
-\newcommand*\ChiSquared{\ensuremath{\chi^2}}
 \newcommand*\half{\frac{1}{2}}
 \newcommand*\PowerHalf{^\half}
 \newcommand*\PowerIHalf{^{-\half}}
@@ -56,6 +55,11 @@
     \ifstrequal{#2}{}{}{^\text{#2}}%
   }%
 }
+\NewDocumentCommand\ChiSquared{ o }{%
+  \ensuremath{%
+    \chi^2\IfValueT{#1}{_\text{#1}}
+  }%
+}
 
 %
 % Matrix algebra
@@ -64,14 +68,26 @@
 \NewDocumentCommand\QuadForm{ m O{} }{% col, mat (optional)
   \ifstrequal{#2}{}{#1^2}{#1^T #2 #1}
 }
-\NewDocumentCommand\QuadFormI{ m O{} O{} }{% col, mat (optional), ndim (opt)
-  \ifstrequal{#2}{}{#1^2}{%
+\NewDocumentCommand\QuadFormI{ m o O{} }{% col, mat (optional), ndim (opt)
+  \IfValueTF{#2}{%
     \ifstrequal{#3}{1}{%
       \frac{#1^2}{#2}
     }{%
-      \ifstrequal{#2}{}{#1^2}{#1^T #2\inv #1}
+      \ifstrequal{#2}{}{#1^2}{#1^T \ifstrequal{#2}{I}{}{#2\inv} #1}
     }
+  }{%
+    #1^2%
   }
+}
+
+\NewDocumentCommand\QuadFormDiffI{ m o O{} O{} }{%
+  % #1 -> variable,
+  % #2 -> covariance (default=none)
+  % #3 -> ndim (default=1)
+  % #4 -> default value (default=none)
+  \QuadFormI{%
+    \ifstrequal{#4}{}{#1}{\left(#1-#4\right)}%
+  }[#2][#3]%
 }
 
 %
@@ -89,19 +105,17 @@
       }%
   }%
 }
-\NewDocumentCommand\NormalDistExp{ m O{} O{1} O{} }{%
+\NewDocumentCommand\NormalDistExp{ m o O{1} O{} }{%
   % #1 -> variable,
   % #2 -> covariance (default=none)
   % #3 -> ndim (default=1)
   % #4 -> default value (default=none)
   \expo{%
     -\half%
-    \QuadFormI{%
-      \ifstrequal{#4}{}{#1}{\left(#1-#4\right)}%
-    }[#2][#3]%
+    \QuadFormDiffI{#1}[#2][#3][#4]
   }%
 }
-\NewDocumentCommand\NormalDistPdf{ m O{} O{1} O{} }{%
+\NewDocumentCommand\NormalDistPdf{ m o O{1} O{} }{%
   % #1 -> variable,
   % #2 -> covariance (default=none)
   % #3 -> ndim (default=1)
@@ -127,6 +141,87 @@
   % #1 -> n
   % #2 -> mean
   \frac{#2^{#1}e^{-#2}}{#1!}
+}
+
+%
+% Chi-squared
+%
+\NewDocumentCommand\ChiSquaredFcn{ m o O{N} O{} o o O{M} O{} }{%
+  %
+  % Main part:
+  % #1 -> x
+  % #2 -> V
+  % #3 -> N
+  % #4 -> x_0
+  % Pull terms:
+  % #5 -> eta
+  % #6 -> V_eta
+  % #7 -> M
+  % #8 -> eta_0
+  \QuadFormDiffI{#1}[#2][#3][#4]%
+  \IfValueT{#5}{%
+    + \QuadFormDiffI{#5}[#6][#7][#8]%
+  }%
+}
+
+\NewDocumentCommand\ChiSquareSolution{ m m m O{} o }{%
+  %
+  % #1 -> data
+  % #2 -> covariance
+  % #3 -> derivatives matrix
+  % #4 -> eta - covariance, if punished
+  % #5 -> eta_0
+  ( %
+    \ifstrempty{#4}{}{%
+    \ifstrequal{#4}{I}{I}{#4\inv} +%
+    }%
+    #3\transp #2\inv #3 %
+  )\inv %
+  #3\transp #2\inv #1%
+  \IfValueT{#5}{ + #5 }%
+}
+
+\NewDocumentCommand\ChiSquaredCovMatrix{ m m O{} }{%
+  %
+  % #1 -> covariance
+  % #2 -> derivatives matrix
+  % #3 -> eta - covariance, if punished
+  %
+  #1 + #2 #3 #2\transp %
+}
+
+\NewDocumentCommand\ChiSquaredMinMatrix{ m m O{} }{%
+  %
+  % #1 -> covariance
+  % #2 -> derivatives matrix
+  % #3 -> eta - covariance, if punished
+  #1\inv%
+  -%
+  #1\inv%
+  #2%
+  \left(%
+    \ifstrempty{#3}{}{%
+    \ifstrequal{#3}{I}{I}{#3\inv} +%
+    }%
+    #2\transp%
+    #1\inv%
+    #2%
+  \right)\inv%
+  #2\transp%
+  #1\inv%
+}
+
+\NewDocumentCommand\ChiSquaredMin{ m m m O{} o }{%
+  %
+  % #1 -> data
+  % #2 -> covariance
+  % #3 -> derivatives matrix
+  % #4 -> eta - covariance, if punished
+  #1\transp%
+  \left(%
+    \ChiSquaredMinMatrix{#2}{#3}[#4]%
+  \right)%
+  #1%
 }
 
 %

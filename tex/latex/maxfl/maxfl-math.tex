@@ -12,10 +12,10 @@
 \NewDocumentCommand\Subscripts{ m O{} O{} O{} O{} }{
   %
   % 1 -> object
-  % 2 -> text superscript
-  % 3 -> superscript
-  % 4 -> text subscript
-  % 5 -> subscript
+  % 2 -> text subscript
+  % 3 -> subscript
+  % 4 -> text superscript
+  % 5 -> superscript
   %
   {%
     \newtoggle{shouldbewrapped}%
@@ -25,13 +25,13 @@
       \left(%
       }{}%
       #1%
-      \ifstrempty{#2}{}{^\text{#2}}%
-      \ifstrempty{#4}{}{_\text{#4}}%
+      \ifstrempty{#2}{}{_\text{#2}}%
+      \ifstrempty{#4}{}{^\text{#4}}%
       \iftoggle{shouldbewrapped}{%
       \right)%
     }{}%
-    \ifstrempty{#3}{}{^{#3}}%
-    \ifstrempty{#5}{}{_{#5}}%
+    \ifstrempty{#3}{}{_{#3}}%
+    \ifstrempty{#5}{}{^{#5}}%
   }%
 }
 %\newcommand\TestSubscripts{%

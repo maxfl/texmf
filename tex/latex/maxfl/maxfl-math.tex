@@ -2,6 +2,58 @@
 \DeclareMathOperator\QuantileFunction{QF}
 \DeclareMathOperator\Min{min}
 
+% Optionally wrap expression if second argument is not empty
+%\newcommand*\OptionalWrap[2]{\ensuremath{\ifstrempty{#2}{#1}{\left(#1\right)}}}
+% Optionally add subscript, if it is not empty
+\newcommand*\OptionalSubscript[1][]{\ifstrempty{#1}{}{_{#1}}}
+% Optionally add superscript, if it is not empty
+\newcommand*\OptionalSuperscript[1][]{\ifstrempty{#1}{}{^{#1}}}
+%% Optionally add superscript, if it is not empty
+\NewDocumentCommand\Subscripts{ m O{} O{} O{} O{} }{
+  %
+  % 1 -> object
+  % 2 -> text superscript
+  % 3 -> superscript
+  % 4 -> text subscript
+  % 5 -> subscript
+  %
+  {%
+    \newtoggle{shouldbewrapped}%
+    \ifstrempty{#2}{}{\ifstrempty{#3}{}{\toggletrue{shouldbewrapped}}}%
+    \ifstrempty{#4}{}{\ifstrempty{#5}{}{\toggletrue{shouldbewrapped}}}%
+    \iftoggle{shouldbewrapped}{%
+      \left(%
+      }{}%
+      #1%
+      \ifstrempty{#2}{}{^\text{#2}}%
+      \ifstrempty{#4}{}{_\text{#4}}%
+      \iftoggle{shouldbewrapped}{%
+      \right)%
+    }{}%
+    \ifstrempty{#3}{}{^{#3}}%
+    \ifstrempty{#5}{}{_{#5}}%
+  }%
+}
+%\newcommand\TestSubscripts{%
+  %\begin{align}
+    %&\Subscripts{A}[te][i][xt][j] \\
+    %&\Subscripts{A}[][i][xt][j] \\
+    %&\Subscripts{A}[te][][xt][j] \\
+    %&\Subscripts{A}[te][i][][j] \\
+    %&\Subscripts{A}[te][i][xt][] \\
+    %&\Subscripts{A}[][][xt][j] \\
+    %&\Subscripts{A}[][i][][j] \\
+    %&\Subscripts{A}[][i][xt][] \\
+    %&\Subscripts{A}[te][][][j] \\
+    %&\Subscripts{A}[te][][xt][] \\
+    %&\Subscripts{A}[te][i][][] \\
+    %&\Subscripts{A}[te][][][] \\
+    %&\Subscripts{A}[][i][][] \\
+    %&\Subscripts{A}[][][xt][] \\
+    %&\Subscripts{A}[][][][j] 
+  %\end{align}
+%}
+
 \newcommand*\Constant{\text{const}}
 \newcommand*\Minimum{\text{min}}
 \newcommand*\Maximum{\text{max}}
@@ -228,6 +280,7 @@
 % Derivative
 %
 \newcommand*\Derivative[2]{\frac{d #1}{d #2}}
+\newcommand*\DDerivative[3]{\frac{d^2 #1}{d#2 d#3}}
 \newcommand*\PDerivative[2]{\frac{\partial #1}{\partial #2}}
 \NewDocumentCommand\EvaluatedAt{ o m }{%
   \IfValueTF{#1}{%

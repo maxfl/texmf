@@ -2,19 +2,13 @@
 \DeclareMathOperator\QuantileFunction{QF}
 \DeclareMathOperator\Min{min}
 
-% Optionally wrap expression if second argument is not empty
-%\newcommand*\OptionalWrap[2]{\ensuremath{\ifstrempty{#2}{#1}{\left(#1\right)}}}
-% Optionally add subscript, if it is not empty
-\newcommand*\OptionalSubscript[1][]{\ifstrempty{#1}{}{_{#1}}}
-% Optionally add superscript, if it is not empty
-\newcommand*\OptionalSuperscript[1][]{\ifstrempty{#1}{}{^{#1}}}
 %% Optionally add superscript, if it is not empty
 \NewDocumentCommand\Subscripts{ m O{} O{} O{} O{} }{
   %
   % 1 -> object
-  % 2 -> text subscript
+  % 2 -> default subscript
   % 3 -> subscript
-  % 4 -> text superscript
+  % 4 -> default superscript
   % 5 -> superscript
   %
   {%
@@ -25,8 +19,8 @@
       \left(%
       }{}%
       #1%
-      \ifstrempty{#2}{}{_\text{#2}}%
-      \ifstrempty{#4}{}{^\text{#4}}%
+      \ifstrempty{#2}{}{_{#2}}%
+      \ifstrempty{#4}{}{^{#4}}%
       \iftoggle{shouldbewrapped}{%
       \right)%
     }{}%
@@ -53,6 +47,11 @@
     %&\Subscripts{A}[][][][j] 
   %\end{align}
 %}
+\NewDocumentCommand\MakeIndexedVariable{ m m O{} O{} }{%
+  \NewDocumentCommand#1{ O{} O{} }{%
+    \Subscripts{#2}[#3][##1][#4][##2]%
+  }%
+}
 
 \newcommand*\Constant{\text{const}}
 \newcommand*\Minimum{\text{min}}
@@ -289,3 +288,8 @@
     \Bigr|_{#2}%
   }%
 }
+
+%
+% Integrals
+%
+\newcommand*\IntSym[1]{\int_{-#1}^{+#1}}

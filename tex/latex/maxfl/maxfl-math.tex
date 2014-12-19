@@ -109,6 +109,7 @@
 \newcommand*\PowerIHalf{^{-\half}}
 \newcommand*\inv{\ensuremath{^{-1}}}
 \newcommand*\transp{\ensuremath{^T}}
+\newcommand*\TranspIfExists[1]{\ifstrequal{#1}{}{}{#1\transp}}
 \newcommand*\hconjugate{\ensuremath{^\dagger}}
 \newcommand*\cconjugate{\ensuremath{^c}}
 \newcommand*\conjugate{\ensuremath{^*}}
@@ -280,9 +281,9 @@
     \ifstrempty{#4}{}{%
     \ifstrequal{#4}{I}{I}{#4\inv} +%
     }%
-    #3\transp #2\inv #3 %
+    \TranspIfExists{#3} #2\inv #3 %
   \right)\inv %
-  #3\transp #2\inv #1%
+  \TranspIfExists{#3} #2\inv #1%
   \IfValueT{#5}{ + #5 }%
 }
 

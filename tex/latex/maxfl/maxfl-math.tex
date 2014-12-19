@@ -112,10 +112,10 @@
 \newcommand*\hconjugate{\ensuremath{^\dagger}}
 \newcommand*\cconjugate{\ensuremath{^c}}
 \newcommand*\conjugate{\ensuremath{^*}}
-\newcommand*\modulus[1]{\ensuremath{\lvert#1\rvert}}
+\newcommand*\modulus[1]{\ensuremath{\left\lvert#1\right\rvert}}
 \newcommand*\expo[1]{\ensuremath{e^{#1}}}
 \newcommand*\squared{\ensuremath{^2}}
-\newcommand*\modsquared[1]{\ensuremath{\lvert#1\rvert^2}}
+\newcommand*\modsquared[1]{\ensuremath{\left\lvert#1\right\rvert^2}}
 \newcommand*\Modsquared[1]{\ensuremath{\left\lvert#1\right\rvert^2}}
 \newcommand*\hconjpart{\text{h.c.}}
 \newcommand*\Determinant[1]{\left\|#1\right\|}
@@ -124,7 +124,7 @@
 \if@maxfl@tau
   \newcommand*\TwoPi{\tau}
 \else
-  \newcommand*\TwoPi{2\pi}
+  \newcommand*\TwoPi{(2\pi)}
 \fi
 
 % Math symbols,
@@ -198,7 +198,7 @@
       \ifstrequal{#2}{1}{%
         \TwoPi{}#1
       }{%
-        (\TwoPi)^#2%
+        \TwoPi^{#2}%
         \ifstrequal{#1}{}{}{\Determinant{#1}}}%
       }%
   }%
@@ -220,6 +220,13 @@
   % #4 -> default value (default=none)
   \NormalDistNorm[#2][#3]%
   \NormalDistExp{#1}[#2][#3][#4]
+}
+
+\NewDocumentCommand\NormalDistCharFunc{ m m m }{%
+  % #1 -> variable'
+  % #2 -> variable,
+  % #3 -> covariance (default=none)
+  \expo{i #1\transp #2 - \half #1\transp #3 #1}
 }
 
 %\newcommand\TestNormalDistr{%
@@ -269,12 +276,12 @@
   % #3 -> derivatives matrix
   % #4 -> eta - covariance, if punished
   % #5 -> eta_0
-  ( %
+  \left( %
     \ifstrempty{#4}{}{%
     \ifstrequal{#4}{I}{I}{#4\inv} +%
     }%
     #3\transp #2\inv #3 %
-  )\inv %
+  \right)\inv %
   #3\transp #2\inv #1%
   \IfValueT{#5}{ + #5 }%
 }

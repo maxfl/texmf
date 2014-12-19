@@ -14,7 +14,7 @@
 %% ---------------------------------------------------------------
 %% 
 \RequirePackage{expl3,xparse}
-\ProvidesExplPackage {siunitx} {2014/09/15} {2.6a}
+\ProvidesExplPackage {siunitx} {2014/10/28} {2.6d}
   {A comprehensive (SI) units package}
 \@ifpackagelater { expl3 } { 2012/11/21 }
   { }
@@ -572,12 +572,13 @@
   \tl_if_eq:NNT \f@family \c__siunitx_texttt_tl
     { \tl_set:Nn \l__siunitx_font_family_tl { tt } }
 }
-\cs_new_protected:Npn \__siunitx_detect_font_shape: {
-  \str_if_eq:VnT \f@shape { it }
-    { \cs_set:Npn \__siunitx_font_shape: { \itshape } }
-  \str_if_eq:VnT \f@shape { sl }
-    { \cs_set:Npn \__siunitx_font_shape: { \slshape } }
-}
+\cs_new_protected:Npn \__siunitx_detect_font_shape:
+  {
+    \cs_if_exist:cT { \f@shape shape }
+      {
+        \cs_set:Npx \__siunitx_font_shape: { \exp_not:c { \f@shape shape } }
+      }
+  }
 \cs_new_protected:Npn \__siunitx_detect_font_mode: {
   \mode_if_math:F
     {
@@ -1022,7 +1023,7 @@
   input-digits            = 0123456789,
   input-exponent-markers  = dDeE,
   input-open-uncertainty  = (, % )
-  input-protect-tokens    = \approx\dots\ge\geq\gg\le\leg\ll\mp\pi\pm\sim,
+  input-protect-tokens    = \approx\dots\ge\geq\gg\le\leq\ll\mp\pi\pm\sim,
   input-signs             = +-\mp\pm,
   input-symbols           = \dots\pi,
   input-uncertainty-signs = \pm,
@@ -1705,7 +1706,7 @@
       {
         \prop_get:NnNF \l__siunitx_number_in_prop { mantissa-decimal }
           \l__siunitx_tmpb_tl
-          { \tl_set:Nn \l__siunitx_tmpb_tl { 0 } }
+          { \tl_clear:N \l__siunitx_tmpb_tl }
         \tl_set:Nx \l__siunitx_tmpb_tl
           {
             \exp_not:V \l__siunitx_tmpb_tl
@@ -6894,7 +6895,9 @@
         \@ifpackageloaded { fontspec }
           {
             \int_const:Nn \c__siunitx_degree_int    { 176 }
-            \int_const:Nn \c__siunitx_micro_int     { "003BC }
+            \@ifpackageloaded { unicode-math }
+              { \int_const:Nn \c__siunitx_micro_int { "003BC } }
+              { \int_const:Nn \c__siunitx_micro_int { "000B5 } }
             \int_const:Nn \c__siunitx_angstrom_int  { "0212B }
             \int_const:Nn \c__siunitx_ohm_int       { "003A9 }
             \__siunitx_option_unchanged:Nnn \l__siunitx_angstrom_math_tl

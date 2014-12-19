@@ -4,19 +4,25 @@
 \RequirePackage{etoolbox}
 
 \newif\if@maxfl@tau\@maxfl@taufalse
+\newif\if@maxfl@vars\@maxfl@varsfalse
 \newif\if@maxfl@math\@maxfl@taufalse
 \newif\if@maxfl@pdg\@maxfl@taufalse
 
 \DeclareOption{tau}{  \@maxfl@tautrue  }
 \DeclareOption{math}{ \@maxfl@mathtrue }
+\DeclareOption{vars}{ \@maxfl@varstrue }
 \DeclareOption{pdg}{  \@maxfl@pdgtrue  }
 
-\ExecuteOptions{math}
+\ExecuteOptions{math,vars}
 
 \ProcessOptions\relax
 
 \if@maxfl@math
   \input{maxfl-math}
+\fi
+
+\if@maxfl@vars
+  \input{maxfl-vars}
 \fi
 
 \if@maxfl@pdg

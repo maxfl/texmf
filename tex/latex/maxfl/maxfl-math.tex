@@ -335,7 +335,7 @@
 % Derivative
 %
 \newcommand*\Derivative[2]{\frac{d #1}{d #2}}
-\newcommand*\DDerivative[3]{\frac{d^2 #1}{d#2 d#3}}
+\newcommand*\DDerivative[3]{\frac{d^2 #1}{d#2\ifstrequal{#3}{}{}{ d#3}}}
 \newcommand*\PDerivative[2]{\frac{\partial #1}{\partial #2}}
 \NewDocumentCommand\EvaluatedAt{ o m }{%
   \IfValueTF{#1}{%

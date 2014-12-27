@@ -1,9 +1,16 @@
 \ProvidesPackage{cyrdefs}
+\RequirePackage{enumitem}
 
 \DeclareOption{enum}{%
   % Use cyrillic for letter enumeration
-  \let\alph\asbuk
-  \let\Alph\Asbuk
+
+  \ifdefined\@Asbuk
+    \AddEnumerateCounter{\Asbuk}{\@Asbuk}{М}
+    \AddEnumerateCounter{\asbuk}{\@asbuk}{м}
+  \else%
+    \AddEnumerateCounter{\Asbuk}{\russian@Alph}{М}
+    \AddEnumerateCounter{\asbuk}{\russian@alph}{м}
+  \fi
 }
 
 \DeclareOption{itemi}{%

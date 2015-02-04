@@ -1,0 +1,7 @@
+\ProvidesDictionary{siunitx-translated}{english}
+\RequirePackage{siunitx}
+
+\providetranslation{barn}{b}
+\providetranslation{micro}{\ensuremath{\SIUnitSymbolMicro}}
+\providetranslation{to (numerical range)}{to}
+

@@ -5,6 +5,7 @@
 \newtranslation{or}{или}
 \newtranslation{from (date)}{с}
 \newtranslation{till (date)}{по}
+\newtranslation{per day}{в день}
 \newtranslation{day}{день}
 \newtranslation{days}{дни}
 \newtranslation{days (gen)}{дней}

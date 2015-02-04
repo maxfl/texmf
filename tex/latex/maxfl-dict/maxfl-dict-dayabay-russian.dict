@@ -10,12 +10,15 @@
 
 \providetranslation{IBD candidates}{Кандидаты ОБР}
 \providetranslation{DAQ time}{Время набора данных}
+\providetranslation{DAQ live time}{Время набора данных}
+\providetranslation{Muon veto time}{Время мюонного вето}
 
 \providetranslation{Accidentals}{Случайные совпадения}
 \providetranslation{Fast neutrons}{Быстрые нейтроны}
 \providetranslation{IBD rate}{Поток ОБР}
 
-\providetranslation{Efficiency}{$\varepsilon$}
+\providetranslation{Efficiency}{Эффективность}
+\providetranslation{Efficiency (short)}{$\varepsilon$}
 \providetranslation{Correlated}{Корр.}
 \providetranslation{Uncorrelated}{Некорр.}
 \providetranslation{Target Protons}{Число протонов в мишени}

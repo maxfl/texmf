@@ -1,0 +1,13 @@
+% vim: filetype=tex
+\ProvidesDictionary{maxfl-dict-general}{russian}
+
+\newtranslation{and}{и}
+\newtranslation{or}{или}
+\newtranslation{from (date)}{с}
+\newtranslation{till (date)}{по}
+\newtranslation{day}{день}
+\newtranslation{days}{дни}
+\newtranslation{days (gen)}{дней}
+\newtranslation{days (gen,small)}{день}
+\newtranslation{days (gen,mid)}{дня}
+

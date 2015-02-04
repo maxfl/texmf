@@ -1,3 +1,4 @@
+% vim: filetype=tex
 \ProvidesDictionary{siunitx-translated}{russian}
 
 \providetranslation{si_and}{и}

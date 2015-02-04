@@ -1,0 +1,11 @@
+% vim: filetype=tex
+\ProvidesDictionary{maxfl-dict-dayabay}{english}
+
+\providetranslation{Daya Bay site}{Daya Bay}
+\providetranslation{Ling Ao site}{Ling Ao}
+\providetranslation{Far site}{Far}
+
+%\providetranslation{Correlated}{Корр.}
+%\providetranslation{Uncorrelated}{Некорр.}
+
+

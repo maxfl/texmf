@@ -1,0 +1,13 @@
+\ProvidesPackage{maxfl-dict}
+\RequirePackage{translator}
+\RequirePackage{etoolbox}
+
+\newcommand\fldict@alloptions{general,dayabay}
+%\forcsvlist{\fldict@opthandler}{\fldict@alloptions}
+\DeclareOption{all}{\ExecuteOptions{\fldict@alloptions}}
+\DeclareOption{dayabay}{\usedictionary{maxfl-dict-dayabay}}
+\DeclareOption{general}{\usedictionary{maxfl-dict-general}}
+
+\ProcessOptions\relax
+
+\endinput

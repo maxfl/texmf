@@ -1,0 +1,32 @@
+% vim: filetype=tex
+\ProvidesDictionary{maxfl-dict-dayabay}{russian}
+
+\providetranslation{Detector}{Детектор}
+\providetranslation{AD}{Детектор}
+\providetranslation{Site}{Площадка}
+\providetranslation{Daya Bay site}{Ближняя, Daya Bay}
+\providetranslation{Ling Ao site}{Ближняя, Ling Ao}
+\providetranslation{Far site}{Дальняя}
+
+\providetranslation{IBD candidates}{Кандидаты ОБР}
+\providetranslation{DAQ time}{Время набора данных}
+
+\providetranslation{Accidentals}{Случайные совпадения}
+\providetranslation{Fast neutrons}{Быстрые нейтроны}
+\providetranslation{IBD rate}{Поток ОБР}
+
+\providetranslation{Efficiency}{$\varepsilon$}
+\providetranslation{Correlated}{Корр.}
+\providetranslation{Uncorrelated}{Некорр.}
+\providetranslation{Target Protons}{Число протонов в мишени}
+\providetranslation{Flasher cut}{Исключение флэшеров}
+\providetranslation{Prompt energy cut}{Отбор мгновенной энергии}
+\providetranslation{Delayed energy cut}{Отбор запаздывающей энергии}
+\providetranslation{Capture time cut}{Отбор по времени задержки}
+\providetranslation{Multiplicity cut}{Отбор по множественности}
+\providetranslation{Gd capture fraction}{Доля захватов на Gd}
+\providetranslation{Spill-in}{Эффект втекания нейтронов}
+\providetranslation{Livetime}{Время набора данных}
+\providetranslation{Combined}{Суммарно}
+
+

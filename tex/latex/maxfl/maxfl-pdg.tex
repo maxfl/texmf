@@ -1,26 +1,57 @@
 %
+% TODO: make maps work inside \SI and \num
+%
+
+%
 % Neutrino properties
 % PDG 2011
 %
-\newcommand*\PDGMMXIdmCBvalue{2.43e-03}
-\newcommand*\PDGMMXIdmCB{\SI{\PDGMMXIdmCBvalue}{\square\eV}}
+\NewMap{PDGnum}[mmO{}O{}]          % year, variable    
+\NewMap{PDG}[mmO{}O{}]             % year, variable    
+\NewMap{PDGunit}[mO{}O{}O{}]       %       variable
+%\NewDocumentCommand{\PDG}{mm}{     % year, variable
+  %\IfMapHasKey{PDGunit}{#2}{%
+    %\SI{\PDGnum{#1}{#2}}{\PDGunit{#2}}%
+  %}{%
+    %\num{\PDGnum{#1}{#2}}%
+  %}
+%} 
 
 %
-% Neutrino properties
-% PDG 2012
+% Oscillation properties
 %
-\newcommand*\PDGMMXIIthetaAB{\num{0.857+-0.024}}
-\newcommand*\PDGMMXIIdmBA{\SI{7.50(20)e-05}{\square\eV}}
-\newcommand*\PDGMMXIIdmCBvalue{\SI{2.32e-03}{\square\eV}}
+\MapSet{PDGunit}{dm32}{\square\eV}
+\MapSet{PDGunit}{dm31}{\square\eV}
+\MapSet{PDGunit}{dm21}{\square\eV}
+\MapSet{PDGunit}{theta12}{}
+\MapSet{PDGunit}{theta13}{}
+\MapSet{PDGunit}{theta23}{}
 
+\MapSet{PDGnum}{2011}[dm32]{\num{2.43e-03}}
+\MapSet{PDG}   {2011}[dm32]{\SI {2.43e-03}{\square\eV}}
+
+\MapSet{PDGnum}{2012}[dm32]{\num{2.32e-03}}
+\MapSet{PDG}   {2012}[dm32]{\SI {2.32e-03}{\square\eV}}
+
+\MapSet{PDGnum}{2012}[dm21]{\num{7.50(20)e-05}}
+\MapSet{PDG}   {2012}[dm21]{\SI {7.50(20)e-05}{\square\eV}}
+
+\MapSet{PDGnum}{2012}[theta12]{\num{0.857+-0.024}}
+\MapSet{PDG}   {2012}[theta12]{\num{0.857+-0.024}}
+
+%
 % Neutron lifetime
-\newcommand*\PDGMMVNeutronLifetimeVal{878.5+-0.8}
-\newcommand*\PDGMMVNeutronLifetime{\SI{\PDGMMVNeutronLifetimeVal}{\s}}
-\newcommand*\PDGMMXNeutronLifetimeVal{885.7+-0.8}
-\newcommand*\PDGMMXNeutronLifetime{\SI{\PDGMMXNeutronLifetime}{\s}}
-\newcommand*\PDGMMXINeutronLifetimeVal{881.5+-1.5}
-\newcommand*\PDGMMXINeutronLifetime{\SI{\PDGMMXINeutronLifetime}{\s}}
-\newcommand*\PDGMMXIINeutronLifetimeVal{880.1+-1.1}
-\newcommand*\PDGMMXIINeutronLifetime{\SI{\PDGMMXIINeutronLifetime}{\s}}
-\newcommand*\PDGMMXIIINeutronLifetimeVal{880.0+-0.9}
-\newcommand*\PDGMMXIIINeutronLifetime{\SI{\PDGMMXIIINeutronLifetime}{\s}}
+%
+\MapSet{PDGunit}{NeutronLifetime}{\s}
+
+\MapSet{PDGnum}{2005}[NeutronLifetime]{\num{878.5+-0.8}}
+\MapSet{PDGnum}{2010}[NeutronLifetime]{\num{885.7+-0.8}}
+\MapSet{PDGnum}{2011}[NeutronLifetime]{\num{881.5+-1.5}}
+\MapSet{PDGnum}{2012}[NeutronLifetime]{\num{880.1+-1.1}}
+\MapSet{PDGnum}{2013}[NeutronLifetime]{\num{880.0+-0.9}}
+
+\MapSet{PDG}{2005}[NeutronLifetime]{\SI{878.5+-0.8}{\s}}
+\MapSet{PDG}{2010}[NeutronLifetime]{\SI{885.7+-0.8}{\s}}
+\MapSet{PDG}{2011}[NeutronLifetime]{\SI{881.5+-1.5}{\s}}
+\MapSet{PDG}{2012}[NeutronLifetime]{\SI{880.1+-1.1}{\s}}
+\MapSet{PDG}{2013}[NeutronLifetime]{\SI{880.0+-0.9}{\s}}

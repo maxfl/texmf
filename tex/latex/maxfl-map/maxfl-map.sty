@@ -1,0 +1,21 @@
+\ProvidesPackage{maxfl-map}[1]
+
+\newcommand{\NewMap}[1]{%
+  \expandafter\newcommand\csname #1\endcsname[1]{%
+    \ifcsname CustomMap@#1@##1\endcsname%
+      \csname CustomMap@#1@##1\endcsname%
+    \else%
+      [no key `##1' in map `\noexpand{#1}']%
+    \fi%
+  }%
+}
+
+\newcommand{\MapSet}[3]{%
+  \ifcsname #1\endcsname%
+    \expandafter\newcommand\csname CustomMap@#1@#2\endcsname{#3}%
+  \else%
+    \PackageWarning{The map #1 is not defined}%
+  \fi%
+}
+
+\endinput

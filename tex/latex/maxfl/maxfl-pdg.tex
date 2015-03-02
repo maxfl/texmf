@@ -17,6 +17,15 @@
   %}
 %} 
 
+\NewDocumentCommand\PDGset{mmmo}{% year, variable, value, unit
+  \MapSet{PDGnum}{#1}[#2]{\num{#3}}%
+  \IfNoValueTF{#4}{%
+    \MapSet{PDG}{#1}[#2]{\num{#3}}%
+  }{%
+    \MapSet{PDG}{#1}[#2]{\SI{#3}{#4}}%
+  }%
+}
+
 %
 % Oscillation properties
 %
@@ -27,31 +36,18 @@
 \MapSet{PDGunit}{theta13}{}
 \MapSet{PDGunit}{theta23}{}
 
-\MapSet{PDGnum}{2011}[dm32]{\num{2.43e-03}}
-\MapSet{PDG}   {2011}[dm32]{\SI {2.43e-03}{\square\eV}}
-
-\MapSet{PDGnum}{2012}[dm32]{\num{2.32e-03}}
-\MapSet{PDG}   {2012}[dm32]{\SI {2.32e-03}{\square\eV}}
-
-\MapSet{PDGnum}{2012}[dm21]{\num{7.50(20)e-05}}
-\MapSet{PDG}   {2012}[dm21]{\SI {7.50(20)e-05}{\square\eV}}
-
-\MapSet{PDGnum}{2012}[theta12]{\num{0.857+-0.024}}
-\MapSet{PDG}   {2012}[theta12]{\num{0.857+-0.024}}
+\PDGset{2011}{dm32}{2.43e-03}[\square\eV]
+\PDGset{2012}{dm32}{2.32e-03}[\square\eV]
+\PDGset{2012}{dm21}{7.50(20)e-05}[\square\eV]
+\PDGset{2012}{theta12}{0.857+-0.024}
 
 %
 % Neutron lifetime
 %
 \MapSet{PDGunit}{NeutronLifetime}{\s}
 
-\MapSet{PDGnum}{2005}[NeutronLifetime]{\num{878.5+-0.8}}
-\MapSet{PDGnum}{2010}[NeutronLifetime]{\num{885.7+-0.8}}
-\MapSet{PDGnum}{2011}[NeutronLifetime]{\num{881.5+-1.5}}
-\MapSet{PDGnum}{2012}[NeutronLifetime]{\num{880.1+-1.1}}
-\MapSet{PDGnum}{2013}[NeutronLifetime]{\num{880.0+-0.9}}
-
-\MapSet{PDG}{2005}[NeutronLifetime]{\SI{878.5+-0.8}{\s}}
-\MapSet{PDG}{2010}[NeutronLifetime]{\SI{885.7+-0.8}{\s}}
-\MapSet{PDG}{2011}[NeutronLifetime]{\SI{881.5+-1.5}{\s}}
-\MapSet{PDG}{2012}[NeutronLifetime]{\SI{880.1+-1.1}{\s}}
-\MapSet{PDG}{2013}[NeutronLifetime]{\SI{880.0+-0.9}{\s}}
+\PDGset{2005}{NeutronLifetime}{878.5+-0.8}[\s]
+\PDGset{2010}{NeutronLifetime}{885.7+-0.8}[\s]
+\PDGset{2011}{NeutronLifetime}{881.5+-1.5}[\s]
+\PDGset{2012}{NeutronLifetime}{880.1+-1.1}[\s]
+\PDGset{2013}{NeutronLifetime}{880.0+-0.9}[\s]

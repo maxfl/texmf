@@ -8,7 +8,7 @@
     \ifcsname CustomMap@#1@##1@##2@##3@##4\endcsname%
       \csname CustomMap@#1@##1@##2@##3@##4\endcsname%
     \else%
-      \PackageWarning{No key `##1.##2.##3.##4' in map `\noexpand{#1}'}%
+      \PackageWarning{Warning: No key `##1.##2.##3.##4' in map `\noexpand{#1}'}%
     \fi%
   }%
 }
@@ -23,7 +23,7 @@
   \ifcsname #1\endcsname%
     \expandafter\newcommand\csname CustomMap@#1@#2@#3@#4@#5\endcsname{#6}%
   \else%
-    \PackageWarning{The map #1 is not defined}%
+    \PackageWarning{Warning: The map #1 is not defined}%
   \fi%
 }
 

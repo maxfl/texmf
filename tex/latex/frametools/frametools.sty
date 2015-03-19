@@ -1,6 +1,7 @@
 \ProvidesPackage{frametools}
 \RequirePackage{beamerbaserequires}
 \RequirePackage{bookmark}
+\RequirePackage{hyperref}
 \RequirePackage{etoolbox}
 \RequirePackage[absolute,overlay]{textpos} % for textblock environment
 
@@ -68,6 +69,17 @@
   \begin{textblock*}{\paperwidth}(0pt,#1)
     \raggedleft #2\hspace{.5em}
   \end{textblock*}
+}
+
+%
+% Goto and return buttons
+%
+\newcommand\ButtonGoto[2]{%
+  \hyperlink{#1}{\beamergotobutton{#2}}%
+}
+
+\newcommand\ButtonReturn[2]{%
+  \hyperlink{#1}{\beamerreturnbutton{#2}}%
 }
 
 %

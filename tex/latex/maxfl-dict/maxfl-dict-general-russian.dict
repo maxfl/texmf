@@ -12,3 +12,6 @@
 \newtranslation{days (gen,small)}{день}
 \newtranslation{days (gen,mid)}{дня}
 
+\newtranslation{stat.}{стат.}
+\newtranslation{syst.}{сист.}
+

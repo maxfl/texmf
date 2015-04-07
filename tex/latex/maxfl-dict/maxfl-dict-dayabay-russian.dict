@@ -19,8 +19,10 @@
 
 \providetranslation{Efficiency}{Эффективность}
 \providetranslation{Efficiency (short)}{$\varepsilon$}
-\providetranslation{Correlated}{Корр.}
-\providetranslation{Uncorrelated}{Некорр.}
+\providetranslation{Correlated (short)}{Корр.}
+\providetranslation{Uncorrelated (short)}{Некорр.}
+\providetranslation{Correlated}{Коррелированные}
+\providetranslation{Uncorrelated}{Некоррелированные}
 \providetranslation{Target Protons}{Число протонов в мишени}
 \providetranslation{Flasher cut}{Исключение флэшеров}
 \providetranslation{Prompt energy cut}{Отбор мгновенной энергии}
@@ -32,4 +34,11 @@
 \providetranslation{Livetime}{Время набора данных}
 \providetranslation{Combined}{Суммарно}
 
+\providetranslation{Thermal power}{Тепловая мощность}
+\providetranslation{Energy}{Энергия}
+\providetranslation{fission}{деление}
+\providetranslation{IBD reaction}{Реакция ОБР}
+\providetranslation{Fission fraction}{Доля делений}
+\providetranslation{Spent fuel}{ОЯТ}
+\providetranslation{SNF}{ОЯТ}
 

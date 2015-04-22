@@ -17,12 +17,24 @@
   %}
 %} 
 
-\NewDocumentCommand\PDGset{mmmo}{% year, variable, value, unit
-  \MapSet{PDGnum}{#1}[#2]{\num{#3}}%
-  \IfNoValueTF{#4}{%
-    \MapSet{PDG}{#1}[#2]{\num{#3}}%
+\NewDocumentCommand\PDGset{smmmo}{% *(no SI), year, variable, value, unit
+  \IfBooleanTF{#1}{%
+    \MapSet{PDGnum}{#2}[#3]{#4}%
   }{%
-    \MapSet{PDG}{#1}[#2]{\SI{#3}{#4}}%
+    \MapSet{PDGnum}{#2}[#3]{\num{#4}}%
+  }
+  \IfNoValueTF{#5}{%
+    \IfBooleanTF{#1}{%
+      \MapSet{PDG}{#2}[#3]{#4}%
+    }{%
+      \MapSet{PDG}{#2}[#3]{\num{#4}}%
+    }
+  }{%
+    \IfBooleanTF{#1}{%
+      \MapSet{PDG}{#2}[#3]{#4#5}%
+    }{%
+      \MapSet{PDG}{#2}[#3]{\SI{#4}{#5}}%
+    }
   }%
 }
 
@@ -37,11 +49,19 @@
 \MapSet{PDGunit}{theta13}{}
 \MapSet{PDGunit}{theta23}{}
 
-\PDGset{2010}{dmee}{2.43e-03}[\square\eV]
-\PDGset{2011}{dmee}{2.43e-03}[\square\eV]
+\PDGset{2010}{dmee}{2.43(13)e-03}[\square\eV]
+\PDGset{2011}{dmee}{2.43(13)e-03}[\square\eV]
 \PDGset{2012}{dmee}{2.32e-03}[\square\eV]
+
+\PDGset{2011}{dm21}{7.59(21)e-05}[\square\eV]
 \PDGset{2012}{dm21}{7.50(20)e-05}[\square\eV]
+
+\PDGset*{2011}{theta12}{$0.861^{+0.026}_{-0.022}$}
 \PDGset{2012}{theta12}{0.857+-0.024}
+
+\PDGset*{2011}{theta13}{$<0.15$}[, \SI{90}{\percent} CL]
+
+\PDGset*{2011}{theta23}{$>0.92$}
 
 %
 % Neutron lifetime

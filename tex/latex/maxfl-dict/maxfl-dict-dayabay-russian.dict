@@ -13,6 +13,7 @@
 \providetranslation{DAQ live time}{Время набора данных}
 \providetranslation{Muon veto time}{Время мюонного вето}
 
+\providetranslation{Background source}{Источник фона}
 \providetranslation{Accidentals}{Случайные совпадения}
 \providetranslation{Fast neutrons}{Быстрые нейтроны}
 \providetranslation{IBD rate}{Поток ОБР}
@@ -37,8 +38,9 @@
 \providetranslation{Thermal power}{Тепловая мощность}
 \providetranslation{Energy}{Энергия}
 \providetranslation{fission}{деление}
-\providetranslation{IBD reaction}{Реакция ОБР}
+\providetranslation{IBD reaction}{Реакции ОБР}
 \providetranslation{Fission fraction}{Доля делений}
 \providetranslation{Spent fuel}{ОЯТ}
 \providetranslation{SNF}{ОЯТ}
 
+\providetranslation{fission}{деление}

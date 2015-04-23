@@ -2,12 +2,20 @@
 \RequirePackage{translator}
 \RequirePackage{etoolbox}
 
-\newcommand\fldict@alloptions{general,dayabay}
+\newif\if@maxfl@acronym\@maxfl@acronymfalse
+
+%\newcommand\fldict@alloptions{general,dayabay}
 %\forcsvlist{\fldict@opthandler}{\fldict@alloptions}
 \DeclareOption{all}{\ExecuteOptions{\fldict@alloptions}}
 \DeclareOption{dayabay}{\usedictionary{maxfl-dict-dayabay}}
 \DeclareOption{general}{\usedictionary{maxfl-dict-general}}
+\DeclareOption{acronym}{\@maxfl@acronymtrue}
 
 \ProcessOptions\relax
+
+\if@maxfl@acronymtrue
+  \RequirePackage{glossaries}
+  \input{maxfl-acronym.tex}
+\fi
 
 \endinput

@@ -43,4 +43,7 @@
 \providetranslation{Spent fuel}{ОЯТ}
 \providetranslation{SNF}{ОЯТ}
 
+\providetranslation{IBD}{ОБР}
+\providetranslation{inverse beta decay}{обратный бета-распад}
+
 \providetranslation{fission}{деление}

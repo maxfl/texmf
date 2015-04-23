@@ -1,12 +1,12 @@
 %% genitive
-%\glsaddkey%
-%{genitive}% key
-%{}% default value
-%{\glsentrygenitive}% no link cs
-%{\Glsentrygenitive}% no link ucfirst cs
-%{\glsgen}% link cs
-%{\Glsgen}% link ucfirst cs
-%{\GLSgen}% link all caps cs
+\glsaddkey%
+{genitive}% key
+{}% default value
+{\glsentrygenitive}% no link cs
+{\Glsentrygenitive}% no link ucfirst cs
+{\glsgen}% link cs
+{\Glsgen}% link ucfirst cs
+{\GLSgen}% link all caps cs
 
 \newcommand\glsform[2][glsdesc]{%
   % Choses the right form of description for acronym
@@ -18,5 +18,5 @@
   {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
 }
 
-\newacronym{ibd}{ОБР}{обратный бета-распад}
+\newacronym[genitive={обратного бета-распада}]{ibd}{\translate{IBD}}{\translate{inverse beta decay}}
 

@@ -4,7 +4,7 @@
 
 \newif\if@maxfl@acronym\@maxfl@acronymfalse
 
-%\newcommand\fldict@alloptions{general,dayabay}
+\newcommand\fldict@alloptions{general,dayabay,acronym}
 %\forcsvlist{\fldict@opthandler}{\fldict@alloptions}
 \DeclareOption{all}{\ExecuteOptions{\fldict@alloptions}}
 \DeclareOption{dayabay}{\usedictionary{maxfl-dict-dayabay}}
@@ -13,7 +13,7 @@
 
 \ProcessOptions\relax
 
-\if@maxfl@acronymtrue
+\if@maxfl@acronym
   \RequirePackage{glossaries}
   \input{maxfl-acronym.tex}
 \fi

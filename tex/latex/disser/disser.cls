@@ -44,7 +44,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{disser}[2013/12/30 1.3.0 %
+\ProvidesClass{disser}[2015/01/03 1.3.1 %
   Document class for dissertations]
 
 \RequirePackage{kvoptions}
@@ -69,13 +69,11 @@
 \newif\ifDis@ams\Dis@amstrue
 \newif\ifDis@href\Dis@hreffalse
 \newif\ifDis@subf\Dis@subffalse
-\newif\ifDis@subcap\Dis@subcapfalse
 \newif\ifDis@times\Dis@timesfalse
 \newif\ifDis@mtpro\Dis@mtprofalse
 \newif\ifDis@natbib\Dis@natbibfalse
 \DeclareOption{href}{\Dis@hreftrue}
 \DeclareOption{subf}{\Dis@subftrue}
-\DeclareOption{subcap}{\Dis@subcaptrue}
 \DeclareOption{libcat}{\Dis@libcattrue}
 \DeclareOption{classified}{\Dis@classifiedtrue}
 \DeclareOption{facsimile}{\Dis@facsimiletrue}
@@ -348,17 +346,17 @@
 \else%
   \def\disser@asbuk#1{\russian@alph#1}
 \fi
-\renewcommand\thepart{\@Roman\c@part}
-\renewcommand\thechapter{\@arabic\c@chapter}
+\renewcommand\thepart{\Roman{part}}
+\renewcommand\thechapter{\arabic{chapter}}
 \newcommand\theappendix{\Asbuk{chapter}}
 \renewcommand\thesection{%
 \ifnum\c@chapter > \z@
-  \thechapter.\@arabic\c@section%
-\else\@arabic\c@section\fi}
-\renewcommand\thesubsection{\thesection.\@arabic\c@subsection}
-\renewcommand\thesubsubsection{\thesubsection.\@arabic\c@subsubsection}
-\renewcommand\theparagraph{\@arabic\c@paragraph}
-\renewcommand\thesubparagraph{\theparagraph.\@arabic\c@subparagraph}
+  \thechapter.\arabic{section}%
+\else\arabic{section}\fi}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\theparagraph{\arabic{paragraph}}
+\renewcommand\thesubparagraph{\theparagraph.\arabic{subparagraph}}
 
 \newcommand\tocthepart{\thepart}
 \newcommand\tocthechapter{\thechapter}
@@ -1425,8 +1423,22 @@
 
 \ifDis@natbib
   \usepackage[square,comma,sort&compress,numbers]{natbib}
+\else
+  \newcommand\bibsection{}
+  \newcommand\bibpreamble{}
+  \newcommand\bibpostamble{}
+  %\newcommand\bibfont{\normalfont\selectfont}
+  \newlength\bibsep
+\fi
 
-  \renewcommand\bibsection{\nchapter{\bibname}}
+\renewcommand\bibsection{\nchapter{\bibname}}
+
+\renewcommand\bibpreamble{%
+  \renewcommand\@biblabel[1]{##1.}%
+  \setlength\bibsep{0pt}
+}
+
+\@ifpackageloaded{natbib}{
   \@ifundefined{chapter}{%
     \renewcommand\bibsection{%
      \nsection{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
@@ -1442,45 +1454,38 @@
       }%
     }%
   }%
-
-  \renewcommand\bibpreamble{%
-    \renewcommand\@biblabel[1]{##1.}%
-  }
-
-  \renewenvironment{thebibliography}[1]{%
-    \setlength\bibsep{0pt}
+}{%
+  \@ifundefined{chapter}{%
+    \renewcommand\bibsection{%
+     \nsection{\bibname\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}%
+    }%
+  }{}
+  \renewenvironment{thebibliography}[1]{
     \bibsection
-    \parindent \z@
+    \parindent\z@
     \bibpreamble\bibfont
-    \list{\@biblabel{\arabic{NAT@ctr}}}%
-    {\@bibsetup{#1}\setcounter{NAT@ctr}{0}}%
-    %\ifNAT@openbib
-      %\renewcommand\newblock{\par}
-    %\else
-      %\renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
-    %\fi
+    \list{\@biblabel{\@arabic\c@enumiv}}{\settowidth\labelwidth{\@biblabel{#1}}%
+    \setlength{\itemsep}{\bibsep}
+    \setlength{\parsep}{\bibsep}
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
     \sloppy\clubpenalty4000\widowpenalty4000
-    \sfcode`\.=1000\relax
-    \let\citeN\cite
-    \let\shortcite\cite
-    \let\citeasnoun\cite
+    \sfcode`\.\@m
   }{%
-    \def\@noitemerr{%
-      \PackageWarning{natbib}{Empty `thebibliography' environment}%
-    }
-    \endlist\vskip-\lastskip%
+    \bibpostamble
+    \def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist
   }
-\fi
+}
 
 \ifDis@subf
-  \usepackage[config,font=small,labelsep=period]{caption,subfig}
-  \def\thesubfigure{\textit{\asbuk{subfigure}}}
-  \providecommand\thefigsubsep{,~}
-  \def\p@subfigure{\@nameuse{thefigure}\thefigsubsep}
-\fi
-
-\ifDis@subcap
-  \usepackage[list=true]{subcaption}
+  \usepackage[font=small,labelsep=period]{caption} %config,
+  \usepackage[list=true,subrefformat=parens]{subcaption}
   \DeclareCaptionSubType[asbuk]{figure}
   \def\thesubfigure{\textit{\asbuk{subfigure}}}
   %\providecommand\thefigsubsep{,~}

@@ -5,4 +5,5 @@
 \providetranslation{barn}{b}
 \providetranslation{micro}{\ensuremath{\SIUnitSymbolMicro}}
 \providetranslation{to (numerical range)}{to}
-
+\providetranslation{h (time)}{h}
+\providetranslation{y (time)}{y}

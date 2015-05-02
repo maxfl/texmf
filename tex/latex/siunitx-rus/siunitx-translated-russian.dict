@@ -2,12 +2,16 @@
 \ProvidesDictionary{siunitx-translated}{russian}
 
 \providetranslation{si_and}{и}
+
 \providetranslation{Bq}{Бк}
 \providetranslation{barn}{бн}
 \providetranslation{c}{с}
+\providetranslation{d}{д}
 \providetranslation{g}{г}
 \providetranslation{G}{Г}
 \providetranslation{Hz}{Гц}
+\providetranslation{h (time)}{ч}
+\providetranslation{k}{к}
 \providetranslation{l}{л}
 \providetranslation{L}{Л}
 \providetranslation{m}{м}
@@ -16,10 +20,9 @@
 \providetranslation{metre}{метр}
 \providetranslation{micro}{мк}
 \providetranslation{n}{н}
-\providetranslation{k}{к}
 \providetranslation{s}{с}
 \providetranslation{t}{т}
 \providetranslation{to (numerical range)}{до}
 \providetranslation{W}{Вт}
 \providetranslation{eV}{эВ}
-
+\providetranslation{y (time)}{г}

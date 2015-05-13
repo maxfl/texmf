@@ -15,3 +15,12 @@
 \newtranslation{stat.}{стат.}
 \newtranslation{syst.}{сист.}
 
+\newtranslation{NH}{НИ}
+\newtranslation{IH}{ОИ}
+\newtranslation{normal hierarchy}{нормальная иерархия}
+\newtranslation{inverted hierarchy}{обратная иерархия}
+
+\newtranslation{PMT}{ФЭУ}
+\newtranslation{photomultiplier}{фотоумножитель}
+\newtranslation{photomultiplier tube}{фотоэлектронный умножитель}
+

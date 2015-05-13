@@ -8,6 +8,15 @@
 {\Glsgen}% link ucfirst cs
 {\GLSgen}% link all caps cs
 
+\glsaddkey%
+{genitivepl}% key
+{}% default value
+{\glsentrygenitivepl}% no link cs
+{\Glsentrygenitivepl}% no link ucfirst cs
+{\glsgenpl}% link cs
+{\Glsgenpl}% link ucfirst cs
+{\GLSgenpl}% link all caps cs
+
 \newcommand\glsform[2][glsdesc]{%
   % Choses the right form of description for acronym
   % \glsv{key}            -> default
@@ -18,6 +27,18 @@
   {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
 }
 
+\newcommand\glsformfirst[2][glsdesc]{%
+  % Choses the right form of description for acronym
+  % \glsv{key}            -> default
+  % \glsv[glsuseri]{key}  -> from user1
+  % \glsv[Glsuseri]{key}  -> from user1, capitalized
+  {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
+}
+
 \newacronym[genitive={обратного бета-распада}]{ibd}{\translate{IBD}}{\translate{inverse beta decay}}
 \newacronym[genitive={отработанного ядерного топлива}]{snf}{\translate{SNF}}{\translate{spent nuclear fuel}}
+\newacronym[genitive={нормальной иерархии}]{NH}{\translate{NH}}{\translate{normal hierarchy}}
+\newacronym[genitive={обратной иерархии}]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
+\newacronym[genitive={фотоэлектронного умножителя},genitivepl={фотоэлектронных умножителей}]{PMT}{\translate{PMT}}{\translate{photomultiplier
+tube}}
 

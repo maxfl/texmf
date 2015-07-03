@@ -8,6 +8,16 @@
 {\Glsgen}% link ucfirst cs
 {\GLSgen}% link all caps cs
 
+%% instrumental
+\glsaddkey%
+{instrumental}% key
+{}% default value
+{\glsentryinstrumental}% no link cs
+{\Glsentryinstrumental}% no link ucfirst cs
+{\glsinstr}% link cs
+{\Glsinstr}% link ucfirst cs
+{\GLSinstr}% link all caps cs
+
 \glsaddkey%
 {genitivepl}% key
 {}% default value
@@ -37,8 +47,8 @@
 
 \newacronym[genitive={обратного бета-распада}]{ibd}{\translate{IBD}}{\translate{inverse beta decay}}
 \newacronym[genitive={отработанного ядерного топлива}]{snf}{\translate{SNF}}{\translate{spent nuclear fuel}}
-\newacronym[genitive={нормальной иерархии}]{NH}{\translate{NH}}{\translate{normal hierarchy}}
-\newacronym[genitive={обратной иерархии}]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
+\newacronym[genitive={нормальной иерархии},instrumental={нормальной иерархией}]{NH}{\translate{NH}}{\translate{normal hierarchy}}
+\newacronym[genitive={обратной иерархии},instrumental={обратной иерархией}]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
 \newacronym[genitive={фотоэлектронного умножителя},genitivepl={фотоэлектронных умножителей}]{PMT}{\translate{PMT}}{\translate{photomultiplier
 tube}}
 

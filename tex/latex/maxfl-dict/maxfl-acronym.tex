@@ -37,6 +37,16 @@
 {\Glsgenpl}% link ucfirst cs
 {\GLSgenpl}% link all caps cs
 
+%% instrumental
+\glsaddkey%
+{instrumentalpl}% key
+{}% default value
+{\glsentryinstrumentalpl}% no link cs
+{\Glsentryinstrumentalpl}% no link ucfirst cs
+{\glsinstrpl}% link cs
+{\Glsinstrpl}% link ucfirst cs
+{\GLSinstrpl}% link all caps cs
+
 \newcommand\glsform[2][glsdesc]{%
   % Choses the right form of description for acronym
   % \glsv{key}            -> default
@@ -61,11 +71,27 @@
 \newacronym[genitive={отработанного ядерного топлива}]{snf}{\translate{SNF}}{\translate{spent nuclear fuel}}
 \newacronym[genitive={отработанного ядерного топлива}]{ОЯТ}{ОЯТ}{отработанное ядерное топливо}
 
-\newacronym[genitive={нормальной иерархии},instrumental={нормальной иерархией}]{NH}{\translate{NH}}{\translate{normal hierarchy}}
-\newacronym[genitive={обратной иерархии},instrumental={обратной иерархией}]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
+\newacronym[genitive={нормальной иерархии},%
+            instrumental={нормальной иерархией}%
+           ]{NH}{\translate{NH}}{\translate{normal hierarchy}}
+\newacronym[genitive={нормальной иерархии},%
+            instrumental={нормальной иерархией}%
+           ]{НИ}{НИ}{нормальная иерархия}
+\newacronym[genitive={обратной иерархии},%
+            instrumental={обратной иерархией}%
+           ]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
+\newacronym[genitive={обратной иерархии},%
+            instrumental={обратной иерархией}%
+           ]{ОИ}{НИ}{нормальная иерархия}
 
-\newacronym[genitive={фотоэлектронного умножителя},genitivepl={фотоэлектронных умножителей}]{PMT}{\translate{PMT}}{\translate{photomultiplier tube}}
-\newacronym[genitive={фотоэлектронного умножителя},genitivepl={фотоэлектронных умножителей}]{ФЭУ}{ФЭУ}{фотоэлектронный умножитель}
+\newacronym[genitive={фотоэлектронного умножителя},%
+            genitivepl={фотоэлектронных умножителей}%
+           ]{PMT}{\translate{PMT}}{\translate{photomultiplier tube}}
+\newacronym[genitive={фотоэлектронного умножителя},%
+            genitivepl={фотоэлектронных умножителей},%
+            instrumental={фотоэлектронным умножителем},%
+            instrumentalpl={фотоэлектронными умножителями},%
+          ]{ФЭУ}{ФЭУ}{фотоэлектронный умножитель}
 
 \newacronym[genitive={жидкого сцинтиллятора},instrumental={жидким сцинтиллятором}]{ЖС}{ЖС}{жидкий сцинтиллятор}
 

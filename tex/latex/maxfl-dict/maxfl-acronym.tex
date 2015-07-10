@@ -28,6 +28,16 @@
 {\Glsinstr}% link ucfirst cs
 {\GLSinstr}% link all caps cs
 
+%% instrumental
+\glsaddkey%
+{propositional}% key
+{}% default value
+{\glsentrypropositional}% no link cs
+{\Glsentrypropositional}% no link ucfirst cs
+{\glsprop}% link cs
+{\Glsprop}% link ucfirst cs
+{\GLSprop}% link all caps cs
+
 \glsaddkey%
 {genitivepl}% key
 {}% default value
@@ -46,6 +56,16 @@
 {\glsinstrpl}% link cs
 {\Glsinstrpl}% link ucfirst cs
 {\GLSinstrpl}% link all caps cs
+
+%% instrumental
+\glsaddkey%
+{propositionalpl}% key
+{}% default value
+{\glsentrypropositionalpl}% no link cs
+{\Glsentrypropositionalpl}% no link ucfirst cs
+{\glsproppl}% link cs
+{\Glsproppl}% link ucfirst cs
+{\GLSproppl}% link all caps cs
 
 \newcommand\glsform[2][glsdesc]{%
   % Choses the right form of description for acronym
@@ -87,11 +107,23 @@
 \newacronym[genitive={фотоэлектронного умножителя},%
             genitivepl={фотоэлектронных умножителей}%
            ]{PMT}{\translate{PMT}}{\translate{photomultiplier tube}}
-\newacronym[genitive={фотоэлектронного умножителя},%
+\newacronym[nominativepl={фотоэлектронные умножители},%
+            genitive={фотоэлектронного умножителя},%
             genitivepl={фотоэлектронных умножителей},%
             instrumental={фотоэлектронным умножителем},%
             instrumentalpl={фотоэлектронными умножителями},%
-          ]{ФЭУ}{ФЭУ}{фотоэлектронный умножитель}
+           ]{ФЭУ}{ФЭУ}{фотоэлектронный умножитель}
 
-\newacronym[genitive={жидкого сцинтиллятора},instrumental={жидким сцинтиллятором}]{ЖС}{ЖС}{жидкий сцинтиллятор}
+\newacronym[genitive={жидкого сцинтиллятора},%
+            instrumental={жидким сцинтиллятором},%
+            propositional={жидком сцинтилляторе}%
+          ]{ЖС}{ЖС}{жидкий сцинтиллятор}
 
+\newacronym[nominativepl={атомные электростанции},%
+            genitive={атомной электростанции},%
+            genitivepl={атомных электростанций},%
+            instrumental={атомной электростанцией},%
+            instrumentalpl={атомными электростанциями},%
+            propositional={атомной электростанции},%
+            propositionalpl={атомных электростанциях}%
+          ]{АЭС}{АЭС}{атомная электростанция}

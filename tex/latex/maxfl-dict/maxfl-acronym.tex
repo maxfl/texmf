@@ -1,3 +1,5 @@
+\newcommand*\glstextfoot[1]{\glstext{#1}\footnote{\glstext{#1} --- \glsdesc{#1}}}
+
 %% nominative plural
 \glsaddkey%
 {nominativepl}% key
@@ -17,6 +19,16 @@
 {\glsgen}% link cs
 {\Glsgen}% link ucfirst cs
 {\GLSgen}% link all caps cs
+
+%% genitive
+\glsaddkey%
+{accusative}% key
+{}% default value
+{\glsentryaccusative}% no link cs
+{\Glsentryaccusative}% no link ucfirst cs
+{\glsacc}% link cs
+{\Glsacc}% link ucfirst cs
+{\GLSacc}% link all caps cs
 
 %% instrumental
 \glsaddkey%
@@ -46,6 +58,16 @@
 {\glsgenpl}% link cs
 {\Glsgenpl}% link ucfirst cs
 {\GLSgenpl}% link all caps cs
+
+%% genitive
+\glsaddkey%
+{accusativepl}% key
+{}% default value
+{\glsentryaccusativepl}% no link cs
+{\Glsentryaccusativepl}% no link ucfirst cs
+{\glsaccpl}% link cs
+{\Glsaccpl}% link ucfirst cs
+{\GLSaccpl}% link all caps cs
 
 %% instrumental
 \glsaddkey%
@@ -127,3 +149,39 @@
             propositional={атомной электростанции},%
             propositionalpl={атомных электростанциях}%
           ]{АЭС}{АЭС}{атомная электростанция}
+
+\newacronym[%
+  description={метр водного эквивалента --- принятая в физике единица измерения
+    коэффициента подавления космического излучения, используемая для характеризации защищённости
+    подземных лабораторий. Характеризует высоту водяного столба, обладающего эквивалентной подавляющей
+    способностью по отношению к космическому излучению.}%
+]{мвэ}{м.в.э.}{метр водного эквивалента}
+
+\newacronym[%
+  description={inner acrylic vessel --- внутренний акриловый контейнер}
+]{iav}{IAV}{внутренний акриловый контейнер}
+
+\newacronym[%
+  description={outer acrylic vessel --- внешний акриловый контейнер}
+]{oav}{OAV}{внешний акриловый контейнер}
+
+\newacronym[%
+  description={stainless steel vessel --- контейнер из нержавеющей стали}
+]{ssv}{SSV}{контейнер из нержавеющей стали}
+
+\newacronym[%
+  description={automated calibration unit --- автоматическое калибровочное устройство},%
+]{acu}{ACU}{автоматическое калибровочное устройство}
+
+\newacronym[%
+  description={linear alkylbenzene --- линейный алкилбензол, \ce{C6H5C_nH_{2n+1}}},
+  genitive={линейного алкилбензола},
+]{lab}{LAB}{линейный алкилбензол}
+\newacronym[%
+description={2,5-дифенилоксазол, \ce{C15H11NO}}
+]{ppo}{PPO}{2,5-дифенилоксазол}
+\newacronym[%
+  description={1,4-бис(2-метилстирил)бензол, \ce{C24H22}}, %1,4-bis[2-methylstyryl]benzene --- 
+  genitive={1,4-бис(2-метилстирил)бензола},
+]{bis-MSB}{bis-MSB}{1,4-бис(2-метилстирил)бензол}
+

@@ -1,4 +1,4 @@
-\newcommand*\glstextfoot[1]{\glstext{#1}\footnote{\glstext{#1} --- \glsdesc{#1}}}
+\newcommand*\glstextfoot[1]{\glstext{#1}\footnote{\glstext{#1} --- \glsdesc{#1}.}}
 
 %% nominative plural
 \glsaddkey%
@@ -107,34 +107,38 @@
   {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
 }
 
-\newacronym[genitive={обратного бета-распада}]{ibd}{\translate{IBD}}{\translate{inverse beta decay}}
+\newacronym{IBD}{IBD}{\translate{inverse beta decay}}
+\newacronym{SNF}{SNF}{\translate{spent nuclear fuel}}
+\newacronym{NH}{NH}{\translate{normal hierarchy}}
+\newacronym{IH}{IH}{\translate{inverted hierarchy}}
+\newacronym{PMT}{PMT}{\translate{photomultiplier tube}}
+
 \newacronym[genitive={обратного бета-распада}]{ОБР}{ОБР}{обратный бета-распад}
 
-\newacronym[genitive={отработанного ядерного топлива}]{snf}{\translate{SNF}}{\translate{spent nuclear fuel}}
 \newacronym[genitive={отработанного ядерного топлива}]{ОЯТ}{ОЯТ}{отработанное ядерное топливо}
 
-\newacronym[genitive={нормальной иерархии},%
-            instrumental={нормальной иерархией}%
-           ]{NH}{\translate{NH}}{\translate{normal hierarchy}}
 \newacronym[genitive={нормальной иерархии},%
             instrumental={нормальной иерархией}%
            ]{НИ}{НИ}{нормальная иерархия}
 \newacronym[genitive={обратной иерархии},%
             instrumental={обратной иерархией}%
-           ]{IH}{\translate{IH}}{\translate{inverted hierarchy}}
-\newacronym[genitive={обратной иерархии},%
-            instrumental={обратной иерархией}%
            ]{ОИ}{НИ}{нормальная иерархия}
 
-\newacronym[genitive={фотоэлектронного умножителя},%
-            genitivepl={фотоэлектронных умножителей}%
-           ]{PMT}{\translate{PMT}}{\translate{photomultiplier tube}}
 \newacronym[nominativepl={фотоэлектронные умножители},%
             genitive={фотоэлектронного умножителя},%
             genitivepl={фотоэлектронных умножителей},%
             instrumental={фотоэлектронным умножителем},%
             instrumentalpl={фотоэлектронными умножителями},%
+            propositional={фотоэлектронном умножителе},%
            ]{ФЭУ}{ФЭУ}{фотоэлектронный умножитель}
+
+\newacronym[nominativepl={резистивные плоские камеры},%
+            genitive={резистивной плоской камеры},%
+            genitivepl={резистивных плоских камер},%
+            instrumental={резистивной плоской камерой},%
+            instrumentalpl={резистивными плоскими камерами},%
+            description={resistive plate chamber (RPC) --- резистивная плоская камера}%
+           ]{РПК}{РПК}{резистивная плоская камера}
 
 \newacronym[genitive={жидкого сцинтиллятора},%
             instrumental={жидким сцинтиллятором},%
@@ -153,8 +157,8 @@
 \newacronym[%
   description={метр водного эквивалента --- принятая в физике единица измерения
     коэффициента подавления космического излучения, используемая для характеризации защищённости
-    подземных лабораторий. Характеризует высоту водяного столба, обладающего эквивалентной подавляющей
-    способностью по отношению к космическому излучению.}%
+    подземных лабораторий. Характеризует высоту водяного столба, обладающего эквивалентной
+    подавляющей способностью по отношению к космическому излучению}%
 ]{мвэ}{м.в.э.}{метр водного эквивалента}
 
 \newacronym[%
@@ -170,6 +174,14 @@
 ]{ssv}{SSV}{контейнер из нержавеющей стали}
 
 \newacronym[%
+  description={inner water shield --- внутренний водяной буфер}
+]{iws}{IWS}{внутренний водяной буфер}
+
+\newacronym[%
+  description={outer water shield --- внешний водяной буфер}
+]{ows}{OWS}{внешний водяной буфер}
+
+\newacronym[%
   description={automated calibration unit --- автоматическое калибровочное устройство},%
 ]{acu}{ACU}{автоматическое калибровочное устройство}
 
@@ -181,7 +193,7 @@
 description={2,5-дифенилоксазол, \ce{C15H11NO}}
 ]{ppo}{PPO}{2,5-дифенилоксазол}
 \newacronym[%
-  description={1,4-бис(2-метилстирил)бензол, \ce{C24H22}}, %1,4-bis[2-methylstyryl]benzene --- 
+  description={1,4-бис(2-метилстирил)бензол, \ce{C24H22}}, %1,4-bis[2-methylstyryl]benzene ---
   genitive={1,4-бис(2-метилстирил)бензола},
 ]{bis-MSB}{bis-MSB}{1,4-бис(2-метилстирил)бензол}
 

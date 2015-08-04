@@ -2,6 +2,7 @@
 \ProvidesDictionary{maxfl-dict-dayabay}{russian}
 
 \providetranslation{Detector}{Детектор}
+\providetranslation{detector}{детектор}
 \providetranslation{AD}{Детектор}
 \providetranslation{Site}{Площадка}
 \providetranslation{Daya Bay site}{Ближняя, Daya Bay}
@@ -14,6 +15,7 @@
 \providetranslation{Muon veto time}{Время мюонного вето}
 
 \providetranslation{Background source}{Источник фона}
+\providetranslation{background source}{источник фона}
 \providetranslation{Accidentals}{Случайные совпадения}
 \providetranslation{Fast neutrons}{Быстрые нейтроны}
 \providetranslation{IBD rate}{Поток ОБР}
@@ -26,8 +28,8 @@
 \providetranslation{Uncorrelated}{Некоррелированные}
 \providetranslation{Target Protons}{Число протонов в мишени}
 \providetranslation{Flasher cut}{Исключение флэшеров}
-\providetranslation{Prompt energy cut}{Отбор мгновенной энергии}
-\providetranslation{Delayed energy cut}{Отбор запаздывающей энергии}
+\providetranslation{Prompt energy cut}{Отбор по мгновенной энергии}
+\providetranslation{Delayed energy cut}{Отбор по запаздывающей энергии}
 \providetranslation{Capture time cut}{Отбор по времени задержки}
 \providetranslation{Multiplicity cut}{Отбор по множественности}
 \providetranslation{Gd capture fraction}{Доля захватов на Gd}
@@ -39,7 +41,7 @@
 \providetranslation{Energy}{Энергия}
 \providetranslation{fission}{деление}
 \providetranslation{IBD reaction}{Реакции ОБР}
-\providetranslation{Fission fraction}{Доля делений}
+\providetranslation{Fission fraction}{Относительный вклад в число распадов}
 \providetranslation{Spent fuel}{ОЯТ}
 \providetranslation{spent nuclear fuel}{отработанное ядерное топливо}
 \providetranslation{SNF}{ОЯТ}

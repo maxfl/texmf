@@ -1,0 +1,9 @@
+\ProvidesPackage{maxfl-numerals}[1]
+
+\newcommand*\numeralfgen[1]{\ifcase#1\relax нуля\or одной\or двух\or трёх\or четырёх\or пяти\or шести%
+\or семи\or восьми\or девяти\or десяти\fi}
+\newcommand*\tonumeralfs[1]{\ifcase#1\relax к нулю\or к первой\or ко второй\or к третьей\or к четвёртой%
+\or к пятой\or к шестой\or к седьмой\or к восьмой\or к девятой\or к десятой\fi}
+\newcommand*\tochapter{\tonumeralfs{\c@chapter}}
+
+\endinput

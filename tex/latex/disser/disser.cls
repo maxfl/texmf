@@ -1485,7 +1485,7 @@
 
 \ifDis@subf
   \usepackage[font=small,labelsep=period]{caption} %config,
-  \usepackage[list=true,subrefformat=parens]{subcaption}
+  \usepackage[list=false,subrefformat=parens]{subcaption}
   \DeclareCaptionSubType[asbuk]{figure}
   \def\thesubfigure{\textit{\asbuk{subfigure}}}
   %\providecommand\thefigsubsep{,~}

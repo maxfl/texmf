@@ -41,6 +41,7 @@
 \providetranslation{Energy}{Энергия}
 \providetranslation{fission}{деление}
 \providetranslation{IBD reaction}{Реакции ОБР}
+\providetranslation{IBD reaction/fission}{Кол-во реакций ОБР/деление}
 \providetranslation{Fission fraction}{Относительный вклад в число распадов}
 \providetranslation{Spent fuel}{ОЯТ}
 \providetranslation{spent nuclear fuel}{отработанное ядерное топливо}

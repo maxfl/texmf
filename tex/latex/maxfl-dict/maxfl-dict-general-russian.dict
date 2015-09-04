@@ -19,6 +19,8 @@
 \newtranslation{IH}{ОИ}
 \newtranslation{normal hierarchy}{нормальная иерархия}
 \newtranslation{inverted hierarchy}{обратная иерархия}
+\newtranslation{Normal hierarchy}{Нормальная иерархия}
+\newtranslation{Inverted hierarchy}{Обратная иерархия}
 
 \newtranslation{PMT}{ФЭУ}
 \newtranslation{photomultiplier}{фотоумножитель}

@@ -25,14 +25,16 @@
 %
 % An environment for backup slides
 %
+\providetranslation[to=russian]{Backup slides}{Дополнительные материалы}
 \newenvironment{backupslides}{%
   \appendix
   \newcounter{finalframe}
   \setcounter{finalframe}{\value{framenumber}}
 
-  \begin{frame}
+  \section*{\translate{Backup slides}}
+  \begin{frame}[label=backup]
     \begin{center}
-      {\Huge Backup slides}
+      {\Huge \translate{Backup slides}\dots}
     \end{center}
   \end{frame}
 }{%
@@ -65,10 +67,12 @@
 %
 % A text in bottom right corner of the slide
 %
-\newcommand\FrameText[2][0.98\textheight]{%
-  \begin{textblock*}{\paperwidth}(0pt,#1)
-    \raggedleft #2\hspace{.5em}
-  \end{textblock*}
+\newcommand<>\FrameText[2][0.98\textheight]{%
+  \uncover#3{%
+    \begin{textblock*}{\paperwidth}(0pt,#1)
+      \raggedleft #2\hspace{.5em}
+    \end{textblock*}%
+  }%
 }
 
 %
@@ -95,6 +99,17 @@
     \usebeamertemplate{block end}%
   \end{actionenv}%
 }
+
+\newenvironment{colorblock}[3]{%
+  \ifstr
+  \setbeamercolor{block body}{#2}%
+  \setbeamercolor{block title}{#3}%
+  \begin{block}{#1}%
+}{%
+  \end{block}%
+}
+
+\newcommand\brule[1][blue!30]{{\textcolor{#1}{\rule[0.25ex]{\linewidth}{0.5ex}}}}
 
 \newenvironment{hlline}[3]{%
   \begin{columns}%
@@ -125,7 +140,7 @@
 
 %
 % Add beamer titles to PDF bookmarks
-\apptocmd{\beamer@@frametitle}{\only<1>{\bookmark[page=\the\c@page,level=3]{#1}}}%
+\apptocmd{\beamer@@frametitle}{\only<1>{\bookmark[page=\the\c@page,level=3]{S: #1}}}%
 {\message{** patching of \string\beamer@@frametitle succeeded **}}%
 {\message{** patching of \string\beamer@@frametitle failed **}}%
 

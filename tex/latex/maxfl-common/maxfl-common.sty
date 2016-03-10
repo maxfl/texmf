@@ -2,9 +2,33 @@
 
 \newif\if@maxfl@beamer\@maxfl@beamerfalse
 \newif\if@maxfl@tikz\@maxfl@tikzfalse
+\newif\if@maxfl@rus\@maxfl@rusfalse
+\newif\if@maxfl@en\@maxfl@enfalse
+\newif\if@maxfl@translate\@maxfl@translatefalse
 \DeclareOption{beamer}{\@maxfl@beamertrue}
 \DeclareOption{tikz}{\@maxfl@tikztrue}
+\DeclareOption{rus}{\@maxfl@rustrue}
+\DeclareOption{en}{\@maxfl@entrue}
+\DeclareOption{translate}{\@maxfl@translatetrue}
 \ProcessOptions\relax
+
+\if@maxfl@rus
+  \usepackage[rus]{maxfl-loc}
+\fi
+\if@maxfl@en
+  \usepackage{maxfl-loc}
+\fi
+
+\if@maxfl@translate
+  \usepackage{translator}
+  \usepackage[all]{maxfl-dict}
+  \if@maxfl@rus
+    \uselanguage{russian}
+  \fi
+  \if@maxfl@en
+    \uselanguage{english}
+  \fi
+\fi
 
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}

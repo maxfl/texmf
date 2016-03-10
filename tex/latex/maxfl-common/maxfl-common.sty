@@ -1,0 +1,80 @@
+\ProvidesPackage{maxfl-common}
+
+\newif\if@maxfl@beamer\@maxfl@beamerfalse
+\newif\if@maxfl@tikz\@maxfl@tikzfalse
+\DeclareOption{beamer}{\@maxfl@beamertrue}
+\DeclareOption{tikz}{\@maxfl@tikztrue}
+\ProcessOptions\relax
+
+\RequirePackage{ifthen}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+
+\RequirePackage{subfiles}
+
+\RequirePackage{uri}
+
+\RequirePackage[compatibility=false]{caption}
+\RequirePackage{subcaption}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage[version=3]{mhchem}
+\RequirePackage{relsize}
+\RequirePackage{wasysym}
+\RequirePackage[separate-uncertainty=true,multi-part-units=brackets,detect-mode=true]{siunitx}
+\RequirePackage[pdg,math]{maxfl}
+\RequirePackage{calculator}
+
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+
+\RequirePackage{verbatim}     % for comment environment
+
+\if@maxfl@tikz
+  \RequirePackage{tikz}
+  \RequirePackage{tikz-cd}
+  \RequirePackage{pgfplots}
+  \pgfplotsset{compat=1.8}
+  \RequirePackage{pgfplotstable}
+  \RequirePackage[beamer,customcolors]{hf-tikz}
+  \RequirePackage{eqparbox}
+  \RequirePackage{onimage} 
+  \usetikzlibrary{arrows,shapes,backgrounds,trees,shapes.geometric,calc,matrix,positioning,intersections}
+  \tikzstyle{every picture}+=[remember picture]
+  \tikzstyle{na} = [baseline=-.5ex]
+\fi
+
+\if@maxfl@beamer
+  \RequirePackage{frametools}  % for various frame utilities
+
+  \RequirePackage{pifont}
+  \newcommand*\cmark{\ding{51}}
+  \newcommand*\xmark{\ding{55}}
+  \definecolor{darkred}{rgb}{0.7,0.1,0.1}
+  \xdefinecolor{darkgreen}{rgb}{0,0.35,0}
+  \newcommand*\itemc{\item[\color{darkgreen}{\cmark}]}
+  \newcommand*\itemx{\item[\color{darkred}{\xmark}]}
+
+  \newcommand\cred[1]{{\color{red}#1}}
+  \newcommand\cblue[1]{{\color{blue}#1}}
+  \newcommand\cgreen[1]{{\color{darkgreen}#1}}
+
+  \useinnertheme{default}
+  \useinnertheme{rectangles}
+  \useoutertheme{mfl1}
+  \usecolortheme{seahorse}
+  \setbeamertemplate{navigation symbols}{}     % disable navigation symbols
+  \setbeamertemplate{caption}{\insertcaption}
+  \setbeamertemplate{enumerate items}[default]
+  \setbeamertemplate{blocks}[rounded][shadow=false] % no shadow for blocks
+  \setbeamercovered{transparent=20}
+
+  \definecolor{lightgray}{gray}{0.9}
+  \newcommand\hlrow{\rowcolor{blue!25}}
+  \hfsetfillcolor{blue!30}
+  \hfsetbordercolor{blue!10}
+\fi
+
+\endinput

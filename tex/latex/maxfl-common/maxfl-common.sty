@@ -64,7 +64,7 @@
   \RequirePackage{pgfplotstable}
   \RequirePackage[beamer,customcolors]{hf-tikz}
   \RequirePackage{eqparbox}
-  \RequirePackage{onimage} 
+  \RequirePackage{onimage}
   \usetikzlibrary{arrows,shapes,backgrounds,trees,shapes.geometric,calc,matrix,positioning,intersections}
   \tikzstyle{every picture}+=[remember picture]
   \tikzstyle{na} = [baseline=-.5ex]
@@ -72,6 +72,7 @@
 
 \if@maxfl@beamer
   \RequirePackage{frametools}  % for various frame utilities
+  \input{common_frames.tex}
 
   \RequirePackage{pifont}
   \newcommand*\cmark{\ding{51}}

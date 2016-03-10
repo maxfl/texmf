@@ -1,0 +1,15 @@
+\ProvidesPackage{eqmark}
+\RequirePackage{tikz}
+
+\usetikzlibrary{arrows}
+\tikzstyle{na} = [baseline=-.5ex]
+
+\newcommand\eqmark[3][]{%
+  \tikz[baseline,inner sep=1pt]{%
+    \node[anchor=base,#1] (#2) {$\displaystyle#3$};
+  }
+}
+\newcommand\eqdesc[1]{\tikz[na] \node[coordinate] (#1) {};}
+\newcommand\eqdesct[3][base]{\tikz[baseline,inner sep=0pt] \node[anchor=#1] (#2) {#3};}
+
+\endinput

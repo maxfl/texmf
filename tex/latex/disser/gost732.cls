@@ -78,10 +78,10 @@
 \renewcommand\conclusionname{%
 \cyr\CYRZ\CYRA\CYRK\CYRL\CYRYU\CYRCH\CYRE\CYRN\CYRI\CYRE
 }
-\renewcommand\theenumi  {\disser@asbuk\c@enumi}
-\renewcommand\theenumii {\@arabic\c@enumii}
-\renewcommand\theenumiii{\@roman\c@enumiii}
-\renewcommand\theenumiv {\disser@Asbuk\c@enumiv}
+\renewcommand\theenumi  {\asbuk{enumi}}
+\renewcommand\theenumii {\arabic{enumii}}
+\renewcommand\theenumiii{\roman{enumiii}}
+\renewcommand\theenumiv {\Asbuk{enumiv}}
 
 \renewcommand\labelenumi  {\theenumi)}
 \renewcommand\labelenumii {\theenumii)}

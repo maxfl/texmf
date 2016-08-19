@@ -27,7 +27,7 @@
 %%
 %% disser -- LaTeX document class for dissertations.
 %%
-%% Copyright (c) 2004-2014 Stanislav Kruchinin
+%% Copyright (c) Stanislav Kruchinin
 %%
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -44,7 +44,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{disser}[2015/01/03 1.3.1 %
+\ProvidesClass{disser}[2015/07/25 1.3.2 %
   Document class for dissertations]
 
 \RequirePackage{kvoptions}
@@ -287,7 +287,7 @@
 \DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
 \DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
 
-\providecommand\disser@deflength[2]{\newlength{#1}\setlength{#1}{#2}}
+\providecommand\Dis@deflength[2]{\newlength{#1}\setlength{#1}{#2}}
 \providecommand\ifundeflength[2]{%
 \ifx#1\undefined \newlength{#1}\setlength{#1}{#2} \else \relax \fi
 }
@@ -295,10 +295,10 @@
 \setlength\lineskip{1\p@}
 \setlength\normallineskip{1\p@}
 
-\newcommand\singlespacing {\renewcommand\baselinestretch{1}\normalsize}
-\newcommand\onehalfspacing{\renewcommand\baselinestretch{1.5}\normalsize}
-\newcommand\doublespacing {\renewcommand\baselinestretch{2}\normalsize}
-\onehalfspacing
+\newcommand\Dis@singlespacing {\renewcommand\baselinestretch{1}\normalsize}
+\newcommand\Dis@onehalfspacing{\renewcommand\baselinestretch{1.5}\normalsize}
+\newcommand\Dis@doublespacing {\renewcommand\baselinestretch{2}\normalsize}
+\Dis@onehalfspacing
 
 \setlength\parindent{5ex}
 
@@ -336,16 +336,7 @@
 \newcounter{figure}[chapter]
 \newcounter{table}[chapter]
 
-\ifdefined\@Asbuk
-  \def\disser@Asbuk#1{\@Asbuk#1}
-\else%
-  \def\disser@Asbuk#1{\russian@Alph#1}
-\fi
-\ifdefined\@asbuk
-  \def\disser@asbuk#1{\@asbuk#1}
-\else%
-  \def\disser@asbuk#1{\russian@alph#1}
-\fi
+
 \renewcommand\thepart{\Roman{part}}
 \renewcommand\thechapter{\arabic{chapter}}
 \newcommand\theappendix{\Asbuk{chapter}}
@@ -908,10 +899,10 @@
 \@endparpenalty   -\@lowpenalty
 \@itempenalty     -\@lowpenalty
 
-\renewcommand\theenumi  {\@arabic\c@enumi}
-\renewcommand\theenumii {\disser@asbuk\c@enumii}
-\renewcommand\theenumiii{\@roman\c@enumiii}
-\renewcommand\theenumiv {\disser@Asbuk\c@enumiv}
+\renewcommand\theenumi  {\arabic{enumi}}
+\renewcommand\theenumii {\asbuk{enumii}}
+\renewcommand\theenumiii{\roman{enumiii}}
+\renewcommand\theenumiv {\Asbuk{enumiv}}
 \newcommand\labelenumi  {\theenumi.}
 \newcommand\labelenumii {\theenumii.}
 \newcommand\labelenumiii{\theenumiii.}
@@ -936,8 +927,8 @@
 \renewcommand\floatpagefraction{.5}
 \renewcommand\dbltopfraction{.7}
 \renewcommand\dblfloatpagefraction{.5}
-\disser@deflength\abovecaptionskip{10\p@}
-\disser@deflength\belowcaptionskip{0\p@}
+\Dis@deflength\abovecaptionskip{10\p@}
+\Dis@deflength\belowcaptionskip{0\p@}
 \newcommand\captionlabeldelim{.}
 \newcommand\captionfont{\small}
 \newcommand\captionlabelfont{\small\selectfont}
@@ -990,7 +981,7 @@
 \providecommand\prethefootnote{}
 \providecommand\postthefootnote{}
 \providecommand\prefootnote{\;}
-\disser@deflength{\footnoteindent}{\parindent}
+\Dis@deflength{\footnoteindent}{\parindent}
 
 \def\@makefnmark{\hbox{\prethefootnote%
 \@textsuperscript{\normalfont\@thefnmark}%
@@ -1234,6 +1225,7 @@
   \newcommand\topicfont{\large\bfseries}
   \newcommand\instfont{\normalfont}
   \newcommand\cdsep{~-- }
+
   \newcommand\maketitle{}
   \setcounter{footnote}{0}
 \else
@@ -1427,7 +1419,7 @@
   \newcommand\bibsection{}
   \newcommand\bibpreamble{}
   \newcommand\bibpostamble{}
-  %\newcommand\bibfont{\normalfont\selectfont}
+  \newcommand\bibfont{\normalfont\selectfont}
   \newlength\bibsep
 \fi
 
@@ -1494,7 +1486,7 @@
 
 \ifpdf
   \ifDis@href
-    \usepackage[pdftex,unicode]{hyperref}
+    \usepackage[unicode]{hyperref}
     \hypersetup{
       colorlinks         = false,
       bookmarksopen      = true,
@@ -1505,7 +1497,7 @@
     }
     \pdfcompresslevel = 9
   \fi
-  \usepackage[pdftex]{graphicx}
+  \usepackage{graphicx}
   \usepackage{cmap}
 \else
   \ifDis@href

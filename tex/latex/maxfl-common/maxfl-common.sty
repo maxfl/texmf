@@ -54,7 +54,12 @@
 \RequirePackage{tabularx}
 \RequirePackage{multirow}
 
+\RequirePackage{graphicx}
+
 \RequirePackage{verbatim}     % for comment environment
+
+\RequirePackage{multicol}
+\newenvironment{nitemize}[1]{\begin{multicols}{#1}\begin{itemize}}{\end{itemize}\end{multicols}}
 
 \if@maxfl@tikz
   \RequirePackage{tikz}

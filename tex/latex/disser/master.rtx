@@ -79,7 +79,7 @@
   \ifx\@sasnd\empty\else\diplomafield{sasnd}\\[\sixthskip]\fi
   \ifx\@rev\empty\else\diplomafield{rev}\\[\sixthskip]\fi
   \ifx\@revsnd\empty\else\diplomafield{revsnd}\\[\sixthskip]\fi
-  \ifx\@con\empty\else\diplomafield{con}\\[9pt]\fi
+  \ifx\@con\empty\else\diplomafield{con}\\[\sixthskip]\fi
   \ifx\@consnd\empty\else\diplomafield{consnd}\fi
 \end{tabbing}
 \vfill

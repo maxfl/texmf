@@ -18,11 +18,11 @@
 \autoref@the
 
 \if@titlepage\renewcommand\maketitle{
-\disser@deflength\firstskip{1cm}
-\disser@deflength\secondskip{2cm}
-\disser@deflength\thirdskip{1cm}
-\disser@deflength\fourthskip{1cm}
-\disser@deflength\fifthskip{1cm}
+\ifundeflength\firstskip{1cm}
+\ifundeflength\secondskip{3cm}
+\ifundeflength\thirdskip{1cm}
+\ifundeflength\fourthskip{1cm}
+\ifundeflength\fifthskip{1cm}
 
 \def\titlefont{\normalsize}
 \def\topicfont{\Large\bfseries}
@@ -32,16 +32,11 @@
 \thispagestyle{empty}
 \enlargethispage{1cm}
 \vspace*{-2cm}
-\begin{center}
-\instfont\@institution\par
-\end{center}
-
-\vskip\firstskip
-\normalfont
 
 \begin{flushright}
   \ifDis@classified\classify\fi
-  \asmanuscript
+  \vskip\firstskip
+  {\normalfont\asmanuscript}
   \ifDis@facsimile\facsimile\fi
 \end{flushright}
 \begin{center}

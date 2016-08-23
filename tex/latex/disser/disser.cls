@@ -1419,7 +1419,7 @@
   \newcommand\bibsection{}
   \newcommand\bibpreamble{}
   \newcommand\bibpostamble{}
-  \newcommand\bibfont{\normalfont\selectfont}
+  %\newcommand\bibfont{\normalfont\selectfont}
   \newlength\bibsep
 \fi
 

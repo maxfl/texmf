@@ -1480,6 +1480,8 @@
   \usepackage[list=false,subrefformat=parens]{subcaption}
   \DeclareCaptionSubType[asbuk]{figure}
   \def\thesubfigure{\textit{\asbuk{subfigure}}}
+  \DeclareCaptionSubType[asbuk]{table}
+  \def\thesubtable{\textit{\asbuk{subtable}}}
   %\providecommand\thefigsubsep{,~}
   %\def\p@subfigure{\@nameuse{thefigure}\thefigsubsep}
 \fi

@@ -1,4 +1,25 @@
+\ProvidesPackage{glossaries-case}
+\RequirePackage{glossaries}
+
 \newcommand*\glstextfoot[1]{\glstext{#1}\footnote{\glstext{#1} --- \glsdesc{#1}.}}
+
+\newcommand\glsform[2][glsdesc]{%
+  % Choses the right form of description for acronym
+  % \glsv{key}            -> default
+  % \glsv[glsuseri]{key}  -> from user1
+  % \glsv[Glsuseri]{key}  -> from user1, capitalized
+  \ifglsused{#2}%
+  {\glsdisp{#2}{\glstext{#2}}}%
+  {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
+}
+
+\newcommand\glsformfirst[2][glsdesc]{%
+  % Choses the right form of description for acronym
+  % \glsv{key}            -> default
+  % \glsv[glsuseri]{key}  -> from user1
+  % \glsv[Glsuseri]{key}  -> from user1, capitalized
+  {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
+}
 
 %% nominative plural
 \glsaddkey%
@@ -89,21 +110,4 @@
 {\Glsproppl}% link ucfirst cs
 {\GLSproppl}% link all caps cs
 
-\newcommand\glsform[2][glsdesc]{%
-  % Choses the right form of description for acronym
-  % \glsv{key}            -> default
-  % \glsv[glsuseri]{key}  -> from user1
-  % \glsv[Glsuseri]{key}  -> from user1, capitalized
-  \ifglsused{#2}%
-  {\glsdisp{#2}{\glstext{#2}}}%
-  {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
-}
-
-\newcommand\glsformfirst[2][glsdesc]{%
-  % Choses the right form of description for acronym
-  % \glsv{key}            -> default
-  % \glsv[glsuseri]{key}  -> from user1
-  % \glsv[Glsuseri]{key}  -> from user1, capitalized
-  {\glsdisp{#2}{\csname#1\endcsname{#2} (\glstext{#2})}}%
-}
-
+\endinput

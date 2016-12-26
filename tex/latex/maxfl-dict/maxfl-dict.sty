@@ -9,14 +9,7 @@
 \DeclareOption{all}{\ExecuteOptions{\fldict@alloptions}}
 \DeclareOption{dayabay}{\usedictionary{maxfl-dict-dayabay}}
 \DeclareOption{general}{\usedictionary{maxfl-dict-general}}
-\DeclareOption{acronym}{\@maxfl@acronymtrue}
 
 \ProcessOptions\relax
-
-\if@maxfl@acronym
-  \RequirePackage{glossaries}
-  \RequirePackage[version=3]{mhchem}
-  \input{maxfl-acronym.tex}
-\fi
 
 \endinput

@@ -2,7 +2,7 @@
 \RequirePackage{beamerbaserequires}
 % \RequirePackage{geometry}
 \RequirePackage{ragged2e}
-\RequirePackage{tikz} 
+\RequirePackage{tikz}
 \usetikzlibrary{chains,shapes.arrows,fit}
 
 \definecolor{arrowcolor}{RGB}{201,216,232}% color for the arrow filling
@@ -44,37 +44,37 @@ on grid
 }
 
 \newcommand\Task[2][]{%
-\node[inner xsep=0pt] (c1) {\phantom{A}};
-\stepcounter{task}
-\ifodd\thetask\relax
-  \renewcommand\taskpos{\taskvsep}\renewcommand\taskanchor{south}
-\else
-  \renewcommand\taskpos{-\taskvsep}\renewcommand\taskanchor{north}
-\fi
-\node[inner,font=\small\sffamily\color{textcolor}]    
-  (c\the\numexpr\value{task}+1\relax) {#1};
-\node[anchor=\taskanchor,yshift=\taskpos] 
-  at (c\the\numexpr\value{task}+1\relax) {\task{#2}};
+\node[inner xsep=0pt] (c1) {\phantom{A}};%
+\stepcounter{task}%
+\ifodd\thetask\relax%
+  \renewcommand\taskpos{\taskvsep}\renewcommand\taskanchor{south}%
+\else%
+  \renewcommand\taskpos{-\taskvsep}\renewcommand\taskanchor{north}%
+\fi%
+\node[inner,font=\small\sffamily\color{textcolor}]%
+  (c\the\numexpr\value{task}+1\relax) {#1};%
+\node[anchor=\taskanchor,yshift=\taskpos]%
+  at (c\the\numexpr\value{task}+1\relax) {\task{#2}};%
 }
 
-\newcommand\drawarrow{% the arrow is placed in the background layer 
+\newcommand\drawarrow{% the arrow is placed in the background layer
                                                      % after the node for the tasks have been placed
-\ifnum\thetask=0\relax
-  \node[on chain] (c1) {}; % if no \Task command is used, the arrow will be drawn
-\fi
-\node[on chain] (f) {};
-\begin{pgfonlayer}{background}
-\node[
-  inner sep=10pt,
-  single arrow,
-  single arrow head extend=0.8cm,
-  draw=none,
-  fill=arrowcolor,
-  fit= (c1) (f)
-] (arrow) {};
+\ifnum\thetask=0\relax%
+  \node[on chain] (c1) {};% if no \Task command is used, the arrow will be drawn
+\fi%
+\node[on chain] (f) {};%
+\begin{pgfonlayer}{background}%
+\node[%
+  inner sep=10pt,%
+  single arrow,%
+  single arrow head extend=0.8cm,%
+  draw=none,%
+  fill=arrowcolor,%
+  fit= (c1) (f)%
+] (arrow) {};%
 \fill[white] % the decoration at the tail of the arrow
-  (arrow.before tail) -- (c1|-arrow.west) -- (arrow.after tail) -- cycle;
-\end{pgfonlayer}
+  (arrow.before tail) -- (c1|-arrow.west) -- (arrow.after tail) -- cycle;%
+\end{pgfonlayer}%
 }
 
 \newenvironment{timeline}[1][node distance=.75\taskwidth]

@@ -83,10 +83,26 @@
     %&\Subscripts{A}[][][][j] 
   %\end{align}
 %}
-\NewDocumentCommand\MakeIndexedVariable{ m m O{} O{} }{%
-  \NewDocumentCommand#1{ O{} O{} }{%
-    \Subscripts{#2}[#3][##1][#4][##2]%
-  }%
+\NewDocumentCommand\MakeIndexedVariable{ s s m m O{} O{} }{%
+  % *#1   - wrap into ensuremath
+  % *#2   - add xspace
+  % {#3}  - command
+  % {#4}  - letter
+  % [#5]  - 
+  % [#6]  - 
+  \IfBooleanTF{#1}{%
+    \NewDocumentCommand#3{ O{} O{} }{%
+      \ensuremath{%
+        \Subscripts{#4}[#5][##1][#6][##2]%
+      }%
+      \IfBooleanTF{#2}{\xspace}{}%
+    }%
+  }{%
+    \NewDocumentCommand#3{ O{} O{} }{%
+      \Subscripts{#4}[#5][##1][#6][##2]%
+      \IfBooleanTF{#2}{\xspace}{}%
+    }%
+  }
 }
 \NewDocumentCommand\MakeIndexedVariableF{ s m m m }{%
   % #1 -> star
